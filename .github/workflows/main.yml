@@ -13,6 +13,15 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@master
 
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with: 
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-build
+            
       - name: Install Dependencies
         run: npm install
 
