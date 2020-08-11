@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/*eslint-disable-next-line*/
 import React, { useState, useEffect } from 'react';
 
 function Login() {
