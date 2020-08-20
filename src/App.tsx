@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from './ components/Login';
+import KakaoSignin from './ components/KakaoSignin';
 import './App.css';
 
 function App() {
   return (
-    <Login />
+    <KakaoSignin />
   );
 }
 
