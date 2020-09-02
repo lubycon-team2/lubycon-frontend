@@ -4,8 +4,8 @@
 import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import { loginRequest } from '../actions/authentication';
-import { browserHistory } from 'react-router';
-import { Link } from 'react-router';
+// import { browserHistory } from 'react-router';
+// import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 const NavGroup = styled('div')`
@@ -112,13 +112,13 @@ class Home extends Component {
                 <br />
                 </React.Fragment>
         ));
-        const logoutButton = (
-            <li>
-                <a onClick={this.props.onLogout}>
-                    <span>로그아웃</span>
-                </a>
-            </li>
-        );
+        // const logoutButton = (
+        //     <li>
+        //         <a onClick={this.props.onLogout}>
+        //             <span>로그아웃</span>
+        //         </a>
+        //     </li>
+        // );
         return (
             <div>
                 <div id="jb-container">
