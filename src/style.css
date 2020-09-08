@@ -1,14 +1,18 @@
+@font-face {
+  font-family: "Spoqa Han Sans";
+  font-weight: 200;
+  src: url("./assets/fonts/SpoqaHansSansRegular.ttf") format("truetype");
+}
+
+body {
+  margin: auto;
+}
+
 #jb-container {
-    margin: 10px auto;
-    padding: 20px;
-    border: 1px solid #bcbcbc;
+
     background-color: blueviolet;
   }
-  #jb-header {
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #bcbcbc;
-  }
+
   #jb-content {
     padding: 20px;
     margin-bottom: 20px;
@@ -32,7 +36,7 @@
     padding: 20px;
     border: 1px solid #bcbcbc;
   }
-  @media ( min-width: 375px ) {
+  @media ( min-width: 380px ) {
     #jb-container {
       width: 940px;
     }

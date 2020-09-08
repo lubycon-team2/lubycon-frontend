@@ -141,10 +141,10 @@ class Home extends Component {
                         </Describe>
                     </div>
                     <div className="wrapper" style={{position:"relative"}}>
-                        <div id="image-group" style={{justifyContent:"space-around", backgroundImage:`url(${require("../assets/images/bigcircle.svg")})`, backgroundPosition:"center", backgroundRepeat:"no-repeat"}}>
+                        {/* <div id="image-group" style={{justifyContent:"space-around", backgroundImage:`url(${require("../assets/images/bigcircle.svg")})`, backgroundPosition:"center", backgroundRepeat:"no-repeat"}}>
                             <div style={{justifyContent:"space-around", backgroundImage:`url(${require("../assets/images/smallCircle.svg")})`, backgroundPosition:"center", backgroundRepeat:"no-repeat"}}>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

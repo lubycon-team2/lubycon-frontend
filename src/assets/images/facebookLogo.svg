@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="11" height="23" viewBox="0 0 11 23">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="패스_4" d="M6-211h11v-23H6z" class="cls-1" data-name="패스 4"/>
+        </clipPath>
+        <clipPath id="clip-path-2">
+            <path id="사각형_9" d="M0 0H13V25H0z" class="cls-1" data-name="사각형 9" transform="translate(5 -235)"/>
+        </clipPath>
+        <clipPath id="clip-path-3">
+            <path id="패스_3" fill="#fff" d="M8.784-216.424c0 1.614.011 3.227-.007 4.841 0 .441.142.594.571.582.927-.026 1.854-.008 2.782-.008.8 0 .8 0 .8-.822v-9.144c0-.8 0-.8.747-.8.85 0 1.7-.023 2.55.009.451.017.631-.163.646-.608.03-.894.055-1.789.123-2.68.045-.589-.193-.772-.735-.756-.907.028-1.816-.017-2.723.016-.494.018-.636-.175-.616-.659.032-.756 0-1.514.01-2.271.007-1.011.39-1.415 1.363-1.429.7-.01 1.392.019 2.085-.02.171-.01.465-.205.475-.333.075-.991.112-1.986.112-2.98 0-.156-.246-.442-.385-.447a26.227 26.227 0 0 0-3.57-.008 4.667 4.667 0 0 0-4.226 4.883v2.45c0 .8 0 .8-.806.8H6.531c-.349 0-.533.152-.529.541q.016 1.494 0 2.988c0 .4.183.512.539.5.54-.019 1.083.023 1.622-.013.476-.032.642.13.633.636-.027 1.573-.01 3.147-.01 4.721" clip-rule="evenodd" data-name="패스 3"/>
+        </clipPath>
+        <style>
+            .cls-1{fill:#fff}.cls-3{clip-path:url(#clip-path)}
+        </style>
+    </defs>
+    <g id="facebook" class="cls-3" transform="translate(-6 234)">
+        <g id="그룹_8" data-name="그룹 8" style="isolation:isolate">
+            <g id="그룹_7" clip-path="url(#clip-path-2)" data-name="그룹 7">
+                <g id="그룹_6" clip-path="url(#clip-path-3)" data-name="그룹 6">
+                    <g id="그룹_5" class="cls-3" data-name="그룹 5">
+                        <path id="패스_1" d="M1-239h21v33H1z" class="cls-1" data-name="패스 1"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

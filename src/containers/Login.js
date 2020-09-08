@@ -30,7 +30,7 @@ const Describe = styled('div')`
     padding-right: 55px;
     width: 264px;
     height: 62px;
-    font-family: SANS-SERIF;
+    font-family: Spoqa Han Sans;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
@@ -45,7 +45,6 @@ const Background = styled('div')`
     justify-content: space-around;
     position: absolute;
     top: 85%;
-    width: 375px;
     height: 247px;
     background-color: white;
 `;
@@ -60,7 +59,8 @@ const FacebookButton = styled('button')`
     border: none;
     color: white;
     text-align: right;
-    border-radius: 12px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 `;
 
 const KakaoButton = styled('button')`
@@ -72,7 +72,8 @@ const KakaoButton = styled('button')`
     border: none;
     color: black;
     text-align: right;
-    border-radius: 12px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 `;
 
 const GoogleButton = styled('button')`
@@ -83,7 +84,8 @@ const GoogleButton = styled('button')`
     border: none;
     color: white;
     text-align: right;
-    border-radius: 12px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 `;
 
 class Login extends Component {
@@ -132,18 +134,20 @@ class Login extends Component {
                         </Describe>
                     </div>
                     <div className="wrapper" style={{position:"relative"}}>
-                        <div id="image-group" style={{justifyContent:"space-around", backgroundImage:`url(${require("../assets/images/bigcircle.svg")})`, backgroundPosition:"center", backgroundRepeat:"no-repeat"}}>
-                            <div style={{justifyContent:"space-around", backgroundImage:`url(${require("../assets/images/smallCircle.svg")})`, backgroundPosition:"center", backgroundRepeat:"no-repeat"}}>
-                                <div style={{display:"inline", paddingTop:"49.8px", width:"173px", paddingRight:"11px"}}>
-                                    <img id="leftGlass" src={require("../assets/images/leftGlass.svg")} width="173px" style={{paddingTop:"40.8px"}}/>
-                                </div>
-                                <div style={{display:"inline", paddingTop:"55.8px", width:"187.5px"}}>
-                                    <img className="rightGlass" src={require("../assets/images/rightGlass.svg")} width="172.6px;" style={{paddingTop:"39.4px"}}/>
-                                </div>
-                            </div>
+                        <div>
+                            <img id="loginImage" src={require("../assets/images/loginImage.svg")} style={{paddingTop:"40.8px", backgroundPosition:"center"}} />
                         </div>
                         <Background>
-                            <FacebookButton>페이스북으로 로그인</FacebookButton>
+                            <FacebookButton>
+                                <div style={{justifyContent:"space-between"}}>
+                                    <div>
+                                        <img id="loginImage" src={require("../assets/images/facebookLogo.svg")} />
+                                    </div>
+                                    <div>
+                                        페이스북으로 로그인
+                                    </div>
+                                </div>
+                            </FacebookButton>
                             <KakaoButton onClick={this.handleKakaoLogin}>카카오톡으로 로그인</KakaoButton>
                             <GoogleButton>구글로 로그인</GoogleButton>
                         </Background>
