@@ -39,6 +39,13 @@ export default function authentication(state, action) {
                     status: { $set: 'FAILURE' }
                 }
             });
+        case types.ACCESS_TOKEN_SAVE:
+            return update(state, {
+                status: {
+                    isLoggedIn: { $set: true},
+                    accessToken: { $set: action.accessToken },
+                }
+            })
         default:
             return state;
 

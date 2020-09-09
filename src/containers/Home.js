@@ -79,28 +79,27 @@ const Partying = styled('div')`
 `;
 
 const Describe = styled('div')`
-    white-space: pre-wrap;
-    padding-left: 56px;
-    padding-top: 21px;
-    padding-right: 55px;
-    width: 264px;
-    height: 62px;
-    font-family: SANS-SERIF;
-    font-size: 14px;
-    font-weight: normal;
+    padding-left: 85px;
+    padding-top: 43.5px;
+    width: 206px;
+    height: 32px;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: bold;
     font-stretch: normal;
     font-style: normal;
-    line-height: 1.71;
+    line-height: 1.33;
     letter-spacing: normal;
     text-align: center;
-    color: #ece5ff;
+    color: #52524e;
 `;
 
 
 class Home extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props.status);
+        console.log('isLoggedIn', this.props.isLoggedIn);
+        console.log('accessToken', this.props.accessToken);
     }
 
     render() {
@@ -135,7 +134,7 @@ class Home extends Component {
                             <a>로그인</a>
                         </LoginBtn>
                     </NavGroup>
-                    <div id="jb-content">
+                    <div id="jb-content" style={{alignItems:"center"}}>
                         <Describe>
                             {addLineBreaks(data)}
                         </Describe>
@@ -155,6 +154,7 @@ class Home extends Component {
 const mapStateToProps = (state) => {
     return {
         status: state.authentication.login.status,
+        isLoggedIn: state.authentication.status.isLoggedIn,
         accessToken: state.authentication.status.accessToken,
     };
 };
