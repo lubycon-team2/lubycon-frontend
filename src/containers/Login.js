@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import { loginRequest } from '../actions/authentication';
-import { browserHistory, Link } from 'react-router';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 const Partying = styled('div')`

@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { tokensaveRequest } from 'src/actions/authentication';
 
 function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    name = name.replace(/[[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
             results = regex.exec(document.location.search);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
