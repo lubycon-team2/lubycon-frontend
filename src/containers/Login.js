@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import { loginRequest } from '../actions/authentication';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import { connect } from 'react-redux';
 
 const Partying = styled('div')`
@@ -25,12 +25,12 @@ const Partying = styled('div')`
 
 const Describe = styled('div')`
     white-space: pre-wrap;
-    padding-left: 56px;
-    padding-top: 21px;
-    padding-right: 55px;
+    // padding-left: 56px;
+    // padding-top: 21px;
+    // padding-right: 55px;
     width: 264px;
     height: 62px;
-    font-family: Spoqa Han Sans;
+    font-family: sans-serif;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
@@ -44,8 +44,7 @@ const Describe = styled('div')`
 const Background = styled('div')`
     justify-content: space-around;
     position: absolute;
-    top: 85%;
-    height: 247px;
+    top: 70%;
     background-color: white;
 `;
 
@@ -96,22 +95,23 @@ class Login extends Component {
     }
 
     handleKakaoLogin() {
-        return this.props.loginRequest().then(
-            () => {
-                if(this.props.status === "SUCCESS" ) {
-                    // create session data
-                    // let loginData = {
-                    //     isLoggedIn: true,
-                    // };
-                    // document.cookie = 'key=' + btoa(JSON.stringify(loginData)); // save session data in cookie 
-                    console.log(this.props.accessToken);
-                    browserHistory.push('/'); 
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        )
+        // return this.props.loginRequest().then(
+        //     () => {
+        //         if(this.props.status === "SUCCESS" ) {
+        //             // create session data
+        //             // let loginData = {
+        //             //     isLoggedIn: true,
+        //             // };
+        //             // document.cookie = 'key=' + btoa(JSON.stringify(loginData)); // save session data in cookie 
+        //             console.log(this.props.accessToken);
+        //             browserHistory.push('/'); 
+        //             return true;
+        //         } else {
+        //             return false;
+        //         }
+        //     }
+        // )
+
     }
     render() {
         let data = "구독 공유 서비스 파팅에 오신것을 환영합니다!\n무궁무진한 컨텐츠를 새로운 친구들과\n함께 즐길 수 있는 기회를 놓치지 마세요!";
@@ -138,18 +138,42 @@ class Login extends Component {
                             <img id="loginImage" src={require("../assets/images/loginImage.svg")} style={{paddingTop:"40.8px", backgroundPosition:"center"}} />
                         </div>
                         <Background>
-                            <FacebookButton>
-                                <div style={{justifyContent:"space-between"}}>
-                                    <div>
-                                        <img id="loginImage" src={require("../assets/images/facebookLogo.svg")} />
+                            <Link to={{pathname: "https://api.partying.cf/oauth2/authorization/facebook"}} target="_blank">
+                                <FacebookButton>
+                                    <div style={{justifyContent:"space-between", display:"flex"}}>
+                                        <div style={{justifyContent:"space-between", display:"flex", marginLeft:"26px"}}>
+                                            <img id="loginImage" src={require("../assets/images/facebookLogo.svg")} />
+                                        </div>
+                                        <div style={{justifyContent:"space-between", display:"flex", alignItems:"center", marginRight:"25px"}}>
+                                            페이스북으로 로그인
+                                        </div>
                                     </div>
-                                    <div>
-                                        페이스북으로 로그인
+                                </FacebookButton>
+                            </Link>
+                            <Link to={{pathname: "https://api.partying.cf/oauth2/authorization/kakao"}} target="_blank">
+                                <KakaoButton onClick={this.handleKakaoLogin}>
+                                    <div style={{justifyContent:"space-between", display:"flex"}}>
+                                        <div style={{justifyContent:"space-between", display:"flex", marginLeft:"26px"}}>
+                                            <img id="loginImage" src={require("../assets/images/kakaotalkLogo.svg")} />
+                                        </div>
+                                        <div style={{justifyContent:"space-between", display:"flex", alignItems:"center", marginRight:"25px"}}>
+                                            카카오톡으로 로그인
+                                        </div>
                                     </div>
-                                </div>
-                            </FacebookButton>
-                            <KakaoButton onClick={this.handleKakaoLogin}>카카오톡으로 로그인</KakaoButton>
-                            <GoogleButton>구글로 로그인</GoogleButton>
+                                </KakaoButton>
+                            </Link>
+                            <Link to={{pathname: "https://api.partying.cf/oauth2/authorization/google"}} target="_blank">
+                                <GoogleButton>
+                                    <div style={{justifyContent:"space-between", display:"flex"}}>
+                                        <div style={{justifyContent:"space-between", display:"flex", marginLeft:"26px"}}>
+                                            <img id="loginImage" src={require("../assets/images/googleLogo.svg")} />
+                                        </div>
+                                        <div style={{justifyContent:"space-between", display:"flex", alignItems:"center", marginRight:"25px"}}>
+                                            구글로 로그인
+                                        </div>
+                                    </div>
+                                </GoogleButton>
+                            </Link>
                         </Background>
                     </div>
                 </div>
