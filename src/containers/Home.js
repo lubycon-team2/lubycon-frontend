@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import { loginRequest } from '../actions/authentication';
 // import { browserHistory } from 'react-router';
-// import { Link } from 'react-router';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 const NavGroup = styled('div')`
@@ -103,6 +103,22 @@ class Home extends Component {
     }
 
     render() {
+        const loginBtn = (
+            <Link to="/login">
+                <LoginBtn>
+                    로그인
+                </LoginBtn>
+            </Link>
+        );
+
+        const logoutBtn = (
+            <Link to="/">
+                <LoginBtn>
+                    로그아웃
+                </LoginBtn>
+            </Link>
+        );
+
         let data = "구독료를 가볍게, 파팅";
         const addLineBreaks = (data) =>
             data.split('\n').map((text, index) => (
@@ -111,13 +127,7 @@ class Home extends Component {
                 <br />
                 </React.Fragment>
         ));
-        // const logoutButton = (
-        //     <li>
-        //         <a onClick={this.props.onLogout}>
-        //             <span>로그아웃</span>
-        //         </a>
-        //     </li>
-        // );
+        
         return (
             <div>
                 <div id="jb-container">
@@ -130,9 +140,7 @@ class Home extends Component {
                             <a>파티 목록</a>
                             <a>내 파티</a>
                         </Menu>
-                        <LoginBtn>
-                            <a>로그인</a>
-                        </LoginBtn>
+                        { this.props.isLoggedIn ? logoutBtn : loginBtn}
                     </NavGroup>
                     <div id="jb-content" style={{alignItems:"center"}}>
                         <Describe>
