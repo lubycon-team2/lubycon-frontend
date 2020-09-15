@@ -1,46 +1,57 @@
-@font-face {
-  font-family: "Spoqa Han Sans";
-  font-weight: 200;
-  src: url("./assets/fonts/SpoqaHansSansRegular.ttf") format("truetype");
-}
 
-body {
-  margin: auto;
-}
 
-#jb-container {
-
+.container {
     background-color: blueviolet;
   }
-
-  #jb-content {
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #bcbcbc;
-    
+  .header {
+    color: #ffffff;
+    width: 85px;
+    height: 27px;
+    font-family: SANS-SERIF;
+    font-size: 22px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: 0.22px;
+    text-align: center;
   }
 
-  #jb-sidebar {
-    
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #bcbcbc;
+  .content {
+    white-space: pre-wrap;
+    width: 264px;
+    height: 62px;
+    font-family: Spoqa Han Sans;    
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ece5ff;
+  }
+  .wrapper {
+    position:"relative";
   }
 
-  #leftGlass {
-    padding-top: 39.8px;
-    width: 187.5px;
-}
+  .backgroundImage {
+    background-position:"center"
+  }
 
-  #jb-footer {
-    padding: 20px;
-    border: 1px solid #bcbcbc;
+  .buttonGroup {
+      display: inline;
+    align-content: center;
+    justify-content: space-around;
+    position: absolute;
+    top: 85%;
+    background-color: white;
   }
   @media ( min-width: 380px ) {
-    #jb-container {
-      width: 940px;
+    .container {
+      /* width: 940px; */
     }
-    #jb-content {
+    .content {
       width: 580px;
       float: left;
     }
