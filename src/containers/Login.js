@@ -7,53 +7,8 @@ import { loginRequest } from '../actions/authentication';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 
-// const Partying = styled('div')`
-    // color: #ffffff;
-    // padding-top: 54px;
-    // padding-left: 145px;
-    // width: 85px;
-    // height: 27px;
-    // font-family: SANS-SERIF;
-    // font-size: 22px;
-    // font-weight: bold;
-    // font-stretch: normal;
-    // font-style: normal;
-    // line-height: 1.23;
-    // letter-spacing: 0.22px;
-    // text-align: left;
-// `;
-
-// const Describe = styled('div')`
-//     white-space: pre-wrap;
-//     padding-left: 56px;
-//     padding-top: 21px;
-//     padding-right: 55px;
-//     width: 264px;
-//     height: 62px;
-//     font-family: Spoqa Han Sans;
-//     font-size: 14px;
-//     font-weight: normal;
-//     font-stretch: normal;
-//     font-style: normal;
-//     line-height: 1.71;
-//     letter-spacing: normal;
-//     text-align: center;
-//     color: #ece5ff;
-// `;
-
-// const Background = styled('div')`
-//     justify-content: space-around;
-//     position: absolute;
-//     top: 85%;
-//     height: 247px;
-//     background-color: white;
-// `;
-
 const FacebookButton = styled('button')`
     background-color: #4185d8;
-    margin-left: 33px;
-    margin-top: 34px;
-    margin-bottom: 11px; 
     width: 310px;
     height: 50px; 
     border: none;
@@ -64,11 +19,9 @@ const FacebookButton = styled('button')`
 `;
 
 const KakaoButton = styled('button')`
-    background-color: #ffd77c;
-    margin-left: 33px;
-    margin-bottom: 11px; 
+    background-color: #ffd77c; 
     width: 310px;
-    height: 50px; 
+    height: 50px;
     border: none;
     color: black;
     text-align: right;
@@ -78,9 +31,8 @@ const KakaoButton = styled('button')`
 
 const GoogleButton = styled('button')`
     background-color: #eb5864;
-    margin-left: 33px;
     width: 310px;
-    height: 50px; 
+    height: 50px;
     border: none;
     color: white;
     text-align: right;
@@ -123,37 +75,6 @@ class Login extends Component {
                 </React.Fragment>
         ));
         return (
-            // <div>
-            //     <div id="jb-container" style={{backgroundColor:"#a07cfc"}}>
-            //         <div id="jb-header">
-            //             <Partying>Partying</Partying>
-            //         </div>
-            //         <div id="jb-content">
-            //             <Describe>
-            //                 {addLineBreaks(data)}
-            //             </Describe>
-            //         </div>
-            //         <div className="wrapper" style={{position:"relative"}}>
-            //             <div>
-            //                 <img id="loginImage" src={require("../assets/images/loginImage.svg")} style={{paddingTop:"40.8px", backgroundPosition:"center"}} />
-            //             </div>
-            //             <Background>
-            //                 <FacebookButton>
-            //                     <div style={{justifyContent:"space-between"}}>
-            //                         <div>
-            //                             <img id="loginImage" src={require("../assets/images/facebookLogo.svg")} />
-            //                         </div>
-            //                         <div>
-            //                             페이스북으로 로그인
-            //                         </div>
-            //                     </div>
-            //                 </FacebookButton>
-            //                 <KakaoButton onClick={this.handleKakaoLogin}>카카오톡으로 로그인</KakaoButton>
-            //                 <GoogleButton>구글로 로그인</GoogleButton>
-            //             </Background>
-            //         </div>
-            //     </div>
-            // </div>
             <div>
                 <div className="container" >
                     <div className="header">
@@ -164,13 +85,14 @@ class Login extends Component {
                             {addLineBreaks(data)}
                         </div>
                     </div>
-                    <div className="wrapper" style={{position:"relative"}}>
+                    <div className="wrapper">
                         <div className="backgroundImage">
-                            <img id="loginImage" src={require("../assets/images/loginImage.svg")}/>
                         </div>
-                        <div className="buttonGroup">
+                    </div>
+                    <div className="buttonGroup">
+                        <div className="buttons">
                             <FacebookButton>
-                                <div style={{justifyContent:"space-between"}}>
+                                <div style={{display:"flex", justifyContent:"space-between"}}>
                                     <div>
                                         <img id="loginImage" src={require("../assets/images/facebookLogo.svg")} />
                                     </div>
@@ -179,8 +101,26 @@ class Login extends Component {
                                     </div>
                                 </div>
                             </FacebookButton>
-                            <KakaoButton onClick={this.handleKakaoLogin}>카카오톡으로 로그인</KakaoButton>
-                            <GoogleButton>구글로 로그인</GoogleButton>
+                            <KakaoButton onClick={this.handleKakaoLogin}>
+                                <div style={{display:"flex", justifyContent:"space-between"}}>
+                                    <div>
+                                        <img id="loginImage" src={require("../assets/images/kakaotalkLogo.svg")} />
+                                    </div>
+                                    <div>
+                                        카카오톡으로 로그인
+                                    </div>
+                                </div>
+                            </KakaoButton>
+                            <GoogleButton>
+                                <div style={{display:"flex", justifyContent:"space-between"}}>
+                                    <div>
+                                        <img id="loginImage" src={require("../assets/images/googleLogo.svg")} />
+                                    </div>
+                                    <div>
+                                        구글로 로그인
+                                    </div>
+                                </div>
+                            </GoogleButton>
                         </div>
                     </div>
                 </div>
