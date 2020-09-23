@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
     entry: [
         './src/index.js',
-        './src/style.css'
+        './src/style.scss'
     ],
     output: {
         path: __dirname + '/public/',

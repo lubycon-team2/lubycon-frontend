@@ -2,46 +2,9 @@
 /* eslint-disable jsx-a11y/alt-text */
 /*eslint-disable-next-line*/
 import React, { Component } from 'react';
-import styled from '@emotion/styled';
 import { loginRequest } from '../actions/authentication';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-
-const FacebookButton = styled('button')`
-    background-color: #4185d8;
-    width: 310px;
-    height: 50px; 
-    border: none;
-    color: white;
-    text-align: right;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    margin: 10px 10px;
-`;
-
-const KakaoButton = styled('button')`
-    background-color: #ffd77c; 
-    width: 310px;
-    height: 50px;
-    border: none;
-    color: black;
-    text-align: right;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    margin: 10px 10px;
-`;
-
-const GoogleButton = styled('button')`
-    background-color: #eb5864;
-    width: 310px;
-    height: 50px;
-    border: none;
-    color: white;
-    text-align: right;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    margin: 10px 10px;
-`;
 
 class Login extends Component {
     constructor(props) {
@@ -94,36 +57,36 @@ class Login extends Component {
                     </div>
                     <div className="buttonGroup">
                         <div className="buttons">
-                            <FacebookButton>
-                                <div style={{display:"flex", justifyContent:"space-between"}}>
-                                    <div>
-                                        <img id="loginImage" src={require("../assets/images/facebookLogo.svg")} />
+                            <button className="btn_facebook">
+                                <div className="btn_facebook_group">
+                                    <div className="btn_facebook_logo">
+                                        <img src={require("../assets/images/facebookLogo.svg")} />
                                     </div>
-                                    <div>
+                                    <div className="btn_facebook_name">
                                         페이스북으로 로그인
                                     </div>
                                 </div>
-                            </FacebookButton>
-                            <KakaoButton onClick={this.handleKakaoLogin}>
-                                <div style={{display:"flex", justifyContent:"space-between"}}>
-                                    <div>
-                                        <img id="loginImage" src={require("../assets/images/kakaotalkLogo.svg")} />
+                            </button>
+                            <button className="btn_kakao" onClick={this.handleKakaoLogin}>
+                                <div className="btn_kakao_group">
+                                    <div className="btn_kakao_logo">
+                                        <img src={require("../assets/images/kakaotalkLogo.svg")} />
                                     </div>
-                                    <div>
+                                    <div className="btn_kakao_name">
                                         카카오톡으로 로그인
                                     </div>
                                 </div>
-                            </KakaoButton>
-                            <GoogleButton>
-                                <div style={{display:"flex", justifyContent:"space-between"}}>
-                                    <div>
-                                        <img id="loginImage" src={require("../assets/images/googleLogo.svg")} />
+                            </button>
+                            <button className="btn_google">
+                                <div className="btn_google_group">
+                                    <div className="btn_google_logo">
+                                        <img src={require("../assets/images/googleLogo.svg")} />
                                     </div>
-                                    <div>
+                                    <div className="btn_google_name">
                                         구글로 로그인
                                     </div>
                                 </div>
-                            </GoogleButton>
+                            </button>
                         </div>
                     </div>
                 </div>
