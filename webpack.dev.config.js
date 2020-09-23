@@ -5,7 +5,7 @@ module.exports = {
     
     entry: [
         './src/index.js',
-        './src/style.css',
+        './src/style.scss',
         'webpack-dev-server/client?http://0.0.0.0:4000', 
         'webpack/hot/only-dev-server'
     ],
