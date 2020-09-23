@@ -77,17 +77,38 @@ class Home extends Component {
                                     </div>
                                 </div>
                                 <div>
-                                    <i class="fas fa-divide fa-2x"></i>
+                                    <i class="fas fa-divide fa-lg"></i>
                                 </div>
                             </div>
                             <hr className="hr_card"></hr>
-                        </div>
-                    </div>
-                    <div className="wrapper" style={{position:"relative"}}>
-                        {/* <div id="image-group" style={{justifyContent:"space-around", backgroundImage:`url(${require("../assets/images/bigcircle.svg")})`, backgroundPosition:"center", backgroundRepeat:"no-repeat"}}>
-                            <div style={{justifyContent:"space-around", backgroundImage:`url(${require("../assets/images/smallCircle.svg")})`, backgroundPosition:"center", backgroundRepeat:"no-repeat"}}>
+                            <div className="price_description_content">
+                                <div className="upper">
+                                    <div className="upper_name">
+                                        기존 가격
+                                    </div>
+                                    <div className="upper_detail">
+                                        14,500
+                                    </div>
+                                </div>
+                                <div className="under">
+                                    <div className="under_name">
+                                        인원
+                                    </div>
+                                    <div className="under_detail">
+                                        4
+                                    </div>
+                                </div>
                             </div>
-                        </div> */}
+                            <hr className="hr_card"></hr>
+                            <div className="price_description_footer">
+                                <div className="price_description_footer_name">
+                                    총합
+                                </div>
+                                <div className="price_description_footer_detail">
+                                    3,625원
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
