@@ -76,8 +76,7 @@ class Home extends Component {
                                         프리미엄
                                     </div>
                                 </div>
-                                <div>
-                                    <i class="fas fa-divide fa-lg"></i>
+                                <div className="division_img">
                                 </div>
                             </div>
                             <hr className="hr_card"></hr>
