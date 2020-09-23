@@ -16,6 +16,7 @@ const FacebookButton = styled('button')`
     text-align: right;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    margin: 10px 10px;
 `;
 
 const KakaoButton = styled('button')`
@@ -27,6 +28,7 @@ const KakaoButton = styled('button')`
     text-align: right;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    margin: 10px 10px;
 `;
 
 const GoogleButton = styled('button')`
@@ -38,6 +40,7 @@ const GoogleButton = styled('button')`
     text-align: right;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    margin: 10px 10px;
 `;
 
 class Login extends Component {
