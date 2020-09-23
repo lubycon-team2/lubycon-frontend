@@ -2,98 +2,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 /*eslint-disable-next-line*/
 import React, { Component } from 'react';
-import styled from '@emotion/styled';
 import { loginRequest } from '../actions/authentication';
 // import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-
-const NavGroup = styled('div')`
-    display: flex;
-    flex-direction: row;
-    margin-top: 35px;
-    margin-bottom: 0px;
-    margin-right: 0px;
-    margin-left: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-    -webkit-box-pack: justify;
-    justify-content: space-around;
-    -webkit-box-flex: 0;
-    flex-grow: 0;
-    flex-basis: 100%;
-`;
-
-const Menu = styled('div')`
-    width: 147px;
-    display: flex;
-    flex-direction: row;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-right: 0px;
-    margin-left: 15px;
-    font-family: sans-serif;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    -webkit-box-flex: 0;
-    flex-grow: 0;
-    flex-basis: 409px;
-`;
-
-const LoginBtn = styled('div')`
-    display: flex;
-    flex-direction: row;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-right: 0px;
-    margin-left: 0px;
-    font-family: sans-serif;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-    -webkit-box-flex: 0;
-    flex-grow: 0;
-`;
-
-const Partying = styled('div')`
-    color: black;
-    padding-top: 25px;
-    padding-left: 145px;
-    width: 85px;
-    height: 27px;
-    font-family: SANS-SERIF;
-    font-size: 22px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.23;
-    letter-spacing: 0.22px;
-    text-align: left;
-`;
-
-const Describe = styled('div')`
-    padding-left: 85px;
-    padding-top: 43.5px;
-    width: 206px;
-    height: 32px;
-    font-family: sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: center;
-    color: #52524e;
-`;
-
 
 class Home extends Component {
     constructor(props) {
@@ -105,21 +17,21 @@ class Home extends Component {
     render() {
         const loginBtn = (
             <Link to="/login">
-                <LoginBtn>
-                    로그인
-                </LoginBtn>
+                <div className="loginout">
+                    <a>로그인</a>
+                </div>
             </Link>
         );
 
         const logoutBtn = (
             <Link to="/">
-                <LoginBtn>
-                    로그아웃
-                </LoginBtn>
+                <div className="loginout">
+                    <a>로그아웃</a>
+                </div>
             </Link>
         );
 
-        let data = "구독료를 가볍게, 파팅";
+        let data = "친구들과 편리하게, 새로운 사람과도 안전하게,\n구독하는 서비스를 한눈에";
         const addLineBreaks = (data) =>
             data.split('\n').map((text, index) => (
                 <React.Fragment key={`${text}-${index}`}>
@@ -130,22 +42,46 @@ class Home extends Component {
         
         return (
             <div>
-                <div id="jb-container">
-                    <div id="jb-header">
-                        <Partying>Partying</Partying>
+                <div className="main">
+                    <div className="main_header">
+                        <div>Partying</div>
                     </div>
-                    <NavGroup>
-                        <Menu>
+                    <div className="nav_group">
+                        <div className="navs">
                             <a>홈</a>
                             <a>파티 목록</a>
                             <a>내 파티</a>
-                        </Menu>
+                        </div>
                         { this.props.isLoggedIn ? logoutBtn : loginBtn}
-                    </NavGroup>
-                    <div id="jb-content" style={{alignItems:"center"}}>
-                        <Describe>
+                    </div>
+                    <hr className="hr"></hr>
+                    <div className="main_content">
+                        <div className="description">
+                            구독료를 가볍게, 파팅
+                        </div>
+                        <div className="subdescription">
                             {addLineBreaks(data)}
-                        </Describe>
+                        </div>
+                        <div className="main_wrapper">
+                            <div className="price_card_img">
+                            </div>
+                        </div>
+                        <div className="price_description">
+                            <div className="price_description_header">
+                                <div>
+                                    <div className="price_description_header_main">
+                                        넷플릭스
+                                    </div>
+                                    <div className="price_description_header_sub">
+                                        프리미엄
+                                    </div>
+                                </div>
+                                <div>
+                                    <i class="fas fa-divide fa-2x"></i>
+                                </div>
+                            </div>
+                            <hr className="hr_card"></hr>
+                        </div>
                     </div>
                     <div className="wrapper" style={{position:"relative"}}>
                         {/* <div id="image-group" style={{justifyContent:"space-around", backgroundImage:`url(${require("../assets/images/bigcircle.svg")})`, backgroundPosition:"center", backgroundRepeat:"no-repeat"}}>
