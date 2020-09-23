@@ -281,6 +281,13 @@ body {
           letter-spacing: 0.16px;
           text-align: left;
         }
+
+        .division_img {
+          background-image: url('../src/assets/images/divide.svg');
+          background-repeat: no-repeat;
+          background-position: right;
+          height: 20px;
+        }
       }
       
       &_content {
