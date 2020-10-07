@@ -6,20 +6,29 @@ import { loginRequest } from '../actions/authentication';
 // import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+//import { FlickingEvent, SelectEvent, ChangeEvent, NeedPanelEvent } from '@egjs/react-flicking';
+import Flicking from '@egjs/react-flicking';
+import { Parallax, Fade, AutoPlay } from '@egjs/flicking-plugins';
+
 
 class Home extends Component {
     constructor(props) {
         super(props);
         console.log('isLoggedIn', this.props.isLoggedIn);
         console.log('accessToken', this.props.accessToken);
+        this.state = {
+            plugins: [],
+            plug: [],
+        }
+        this.plugins = [new Fade(), new AutoPlay(2000, 'NEXT')];
+        this.plug = [new Parallax("img", 4)];
     }
 
     render() {
+        // this.plugins = [new Fade(), new AutoPlay(2000, 'NEXT')];
         const loginBtn = (
-            <Link to="/login">
-                <div className="loginout">
-                    <a>로그인</a>
-                </div>
+            <Link className="loginout" to="/login">
+                로그인
             </Link>
         );
 
@@ -62,51 +71,71 @@ class Home extends Component {
                         <div className="subdescription">
                             {addLineBreaks(data)}
                         </div>
-                        <div className="main_wrapper">
-                            <div className="price_card_img">
-                            </div>
-                        </div>
-                        <div className="price_description">
-                            <div className="price_description_header">
-                                <div>
-                                    <div className="price_description_header_main">
-                                        넷플릭스
+                        <div id="parallax" className="plugins cover">
+                            <Flicking
+                                    className="flicking"
+                                    gap={5}
+                                    circular={true}
+                                    plugins={this.plug}
+                                    >
+                                    <div className="panel">
+                                        <div className="image-area">
+                                            <div className="image-inner-area">
+                                                <img src={require('../assets/images/priceCard.svg')}/>
+                                            </div>
+                                        </div>
+                                        <div className="info">
+                                            <div className="price_description">
+                                                <div className="price_description_header">
+                                                    <div>
+                                                        <div className="price_description_header_main">
+                                                            넷플릭스
+                                                        </div>
+                                                        <div className="price_description_header_sub">
+                                                            프리미엄
+                                                        </div>
+                                                    </div>
+                                                    <div className="division_img">
+                                                    </div>
+                                                </div>
+                                                <hr className="hr_card"></hr>
+                                                <div className="price_description_content">
+                                                    <div className="upper">
+                                                        <div className="upper_name">
+                                                            기존 가격
+                                                        </div>
+                                                        <div className="upper_detail">
+                                                            14,500
+                                                        </div>
+                                                    </div>
+                                                    <div className="under">
+                                                        <div className="under_name">
+                                                            인원
+                                                        </div>
+                                                        <div className="under_detail">
+                                                            4
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr className="hr_card"></hr>
+                                                <div className="price_description_footer">
+                                                    <div className="price_description_footer_name">
+                                                        총합
+                                                    </div>
+                                                    <div className="price_description_footer_detail">
+                                                        3,625원
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="price_description_header_sub">
-                                        프리미엄
+                                    <div className="panel">
+                                    <img src="https://naver.github.io/egjs-flicking/images/bg02.jpg" />
                                     </div>
-                                </div>
-                                <div className="division_img">
-                                </div>
-                            </div>
-                            <hr className="hr_card"></hr>
-                            <div className="price_description_content">
-                                <div className="upper">
-                                    <div className="upper_name">
-                                        기존 가격
+                                    <div className="panel">
+                                        <img src="https://naver.github.io/egjs-flicking/images/bg03.jpg"  />
                                     </div>
-                                    <div className="upper_detail">
-                                        14,500
-                                    </div>
-                                </div>
-                                <div className="under">
-                                    <div className="under_name">
-                                        인원
-                                    </div>
-                                    <div className="under_detail">
-                                        4
-                                    </div>
-                                </div>
-                            </div>
-                            <hr className="hr_card"></hr>
-                            <div className="price_description_footer">
-                                <div className="price_description_footer_name">
-                                    총합
-                                </div>
-                                <div className="price_description_footer_detail">
-                                    3,625원
-                                </div>
-                            </div>
+                            </Flicking>
                         </div>
                     </div>
                 </div>
