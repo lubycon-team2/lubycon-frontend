@@ -203,9 +203,9 @@ body {
     }
 
     .hr {
-      border: 0.5px solid #e3dac9;
+      border: 0.01em solid #c3b091;
       width: 94%;
-      opacity: 0.3;
+      opacity: 0.2;
     }
 
     &_content {
@@ -263,7 +263,7 @@ body {
       .info {
         position: absolute;
         top: 47%;
-        left: 3%;
+        left: 5%;
         transform: translateY(-50%);
 
         .price_description {
@@ -306,6 +306,11 @@ body {
               background-position: right;
               height: 20px;
             }
+          }
+
+          .hr_card {
+            border: 0.01em solid white;
+            opacity: 0.5;
           }
           
           &_content {
@@ -390,15 +395,6 @@ body {
             }
           }
           
-        }
-
-        p {
-          display: inline-block;
-          padding: 10px 15px;
-          background: rgba(0, 0, 0, 0.8);
-          color: white;
-          font-weight: bold;
-          margin: 5px 0px;
         }
       }
     }
