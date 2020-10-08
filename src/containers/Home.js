@@ -33,11 +33,13 @@ class Home extends Component {
         );
 
         const logoutBtn = (
-            <Link to="/">
-                <div className="loginout">
-                    <a>로그아웃</a>
-                </div>
-            </Link>
+            <div className="loginout">
+                <li>
+                    <a onClick={this.props.onLogout}>
+                        <span>로그아웃</span>
+                    </a>
+                </li>
+            </div>
         );
 
         let data = "친구들과 편리하게, 새로운 사람과도 안전하게,\n구독하는 서비스를 한눈에";
@@ -52,7 +54,7 @@ class Home extends Component {
         return (
             <div>
                 <div className="main">
-                    <div className="main_header">
+                    {/* <div className="main_header">
                         <div>Partying</div>
                     </div>
                     <div className="nav_group">
@@ -63,7 +65,7 @@ class Home extends Component {
                         </div>
                         { this.props.isLoggedIn ? logoutBtn : loginBtn}
                     </div>
-                    <hr className="hr"></hr>
+                    <hr className="hr"></hr> */}
                     <div className="main_content">
                         <div className="description">
                             구독료를 가볍게, 파팅
