@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { loginRequest } from '../actions/authentication';
 // import { browserHistory } from 'react-router';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import { connect } from 'react-redux';
 //import { FlickingEvent, SelectEvent, ChangeEvent, NeedPanelEvent } from '@egjs/react-flicking';
 import Flicking from '@egjs/react-flicking';
