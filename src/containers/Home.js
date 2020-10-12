@@ -26,21 +26,21 @@ class Home extends Component {
 
     render() {
         // this.plugins = [new Fade(), new AutoPlay(2000, 'NEXT')];
-        const loginBtn = (
-            <Link className="loginout" to="/login">
-                로그인
-            </Link>
-        );
+        // const loginBtn = (
+        //     <Link className="loginout" to="/login">
+        //         로그인
+        //     </Link>
+        // );
 
-        const logoutBtn = (
-            <div className="loginout">
-                <li>
-                    <a onClick={this.props.onLogout}>
-                        <span>로그아웃</span>
-                    </a>
-                </li>
-            </div>
-        );
+        // const logoutBtn = (
+        //     <div className="loginout">
+        //         <li>
+        //             <a onClick={this.props.onLogout}>
+        //                 <span>로그아웃</span>
+        //             </a>
+        //         </li>
+        //     </div>
+        // );
 
         let data = "친구들과 편리하게, 새로운 사람과도 안전하게,\n구독하는 서비스를 한눈에";
         const addLineBreaks = (data) =>

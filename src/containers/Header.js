@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 class Header extends Component {
-    constructor(props) {
-        super(props);   
-    }
+    // constructor(props) {
+    //     super(props);   
+    // }
 
     render() {
         const loginBtn = (
             <Link to="/login">
                 <div className="loginout">
-                    <a>로그인</a>
+                    로그인
                 </div>
             </Link>
         );
@@ -29,9 +29,9 @@ class Header extends Component {
                 </div>
                 <div className="nav_group">
                     <div className="navs">
-                        <a>홈</a>
-                        <a>파티 목록</a>
-                        <a>내 파티</a>
+                        <a href="#">홈</a>
+                        <a href="#">파티 목록</a>
+                        <a href="#">내 파티</a>
                     </div>
                     { this.props.isLoggedIn ? logoutBtn : loginBtn}
                 </div>
