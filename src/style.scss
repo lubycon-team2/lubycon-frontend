@@ -203,9 +203,9 @@ body {
     }
 
     .hr {
-      border: 0.01em solid #c3b091;
+      border: 0.5px solid #e3dac9;
       width: 94%;
-      opacity: 0.2;
+      opacity: 0.3;
     }
 
     &_content {
@@ -422,6 +422,62 @@ body {
 
 #parallax .flicking .panel {
   width: 345px;
+}
+
+.main_header {
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 35px;
+  color: black;
+  width: 85px;
+  height: 27px;
+  font-family: Lato Bold;
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_group {
+  display: flex;
+  justify-content: space-between;
+
+  .navs {
+    font-family: IBMPlexSans-Medium;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555553;
+    margin-left: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 0;
+    flex-basis: 200px;
+  }
+
+  @media ( min-width: 380px ) {
+    .navs {
+      margin-left: 15px;
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 0;
+      flex-basis: 400px;
+    }
+  }
+
+  .loginout {
+    margin-right: 23px;
+  }
+  
+}
+
+.hr {
+  border: 0.5px solid #e3dac9;
+  width: 94%;
+  opacity: 0.3;
 }
 
   @font-face {
