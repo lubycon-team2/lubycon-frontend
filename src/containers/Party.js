@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 // import { browserHistory } from 'react-router';
 
 class Party extends Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
         
-    }
+    // }
     componentDidMount() {
         
         // if (this.props.status.isLoggedIn === false) {
