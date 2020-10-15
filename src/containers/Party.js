@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/alt-text */
+/*eslint-disable-next-line*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 
 class Party extends Component {
     constructor(props) {
