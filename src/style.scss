@@ -33,6 +33,7 @@ body {
 
 .nav {
   text-decoration: none;
+  color: black;
 }
 
 .nav:focus {
@@ -899,6 +900,71 @@ body {
   .party_list_detail {
     display: flex;
     justify-content: center;
+
+    &_g {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+
+      .detail_txt {
+        font-family: IBMPlexSans;
+        font-size: 18px;
+        font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.78;
+        letter-spacing: normal;
+        text-align: left;
+        color: #555553;
+        margin-bottom: 25px;
+      }
+
+      .detail_img {
+        background-position: center;
+        position: relative;
+        left: 30%;
+      }
+    }
+  }
+}
+
+.phone_auth {
+  display: flex;
+  justify-content: center;
+  margin: 40% 7%;
+  &_form {
+
+    &_num {
+      display: flex;
+
+      .phone {
+        position: relative;
+        top: 44%;
+        border: none;
+        border-bottom: solid 0.6px #e3e3e3;
+      }
+      
+      .submit {
+        background-color: #a07cfc;
+        color: white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 108px;
+        height: 40px;
+        border: none;
+      }
+    }
+
+    &_auth {
+      margin-top: 13%;
+      .authnum {
+        border: none;
+        border-bottom: solid 0.6px #e3e3e3;
+        width: 100%;
+      }
+
+    }
+    
   }
 }
 

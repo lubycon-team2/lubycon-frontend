@@ -3,7 +3,7 @@
 /*eslint-disable-next-line*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 class Party extends Component {
     // constructor(props) {
@@ -11,11 +11,10 @@ class Party extends Component {
         
     // }
     componentDidMount() {
-        
-        // if (this.props.status.isLoggedIn === false) {
-        //     console.log(this.props.status.isLoggedIn);
-        //     browserHistory.push('/login');
-        // }
+        if (this.props.status.isLoggedIn === false) {
+            console.log(this.props.status.isLoggedIn);
+            browserHistory.push('/login');
+        }
     };
     render() {
         return (
@@ -34,9 +33,11 @@ class Party extends Component {
                         </div>
                     </div>
                     <div className='profile_start'>
-                        <button className='make_party'>
-                            파티 모집하기
-                        </button>
+                        <Link to='party/new'>
+                            <button className='make_party'>
+                                파티 모집하기
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <hr className='hr'></hr>
@@ -58,6 +59,25 @@ class Party extends Component {
                         </div>
                         <div className='detail_img'>
                             <img src={require('../assets/images/no_party.svg')} />
+                        </div>
+                    </div>
+                </div>
+                <hr className='hr'></hr>
+                <div className="footer">
+                    <div className="footer_content">
+                        <div className="footer_content_txt">
+                            문의메일
+                        </div>
+                        <div className="footer_content_mail">
+                            Summerzet@naver.com
+                        </div>
+                        <div className="footer_content_legal">
+                            <a href="https://www.notion.so/727d24a49df046ba84e42a63f408537d">
+                                개인정보 동의 약관
+                            </a>
+                            <a href="https://www.notion.so/05e1a56e13eb49f29ae614024231333a">
+                                파팅 이용약관 
+                            </a>
                         </div>
                     </div>
                 </div>
