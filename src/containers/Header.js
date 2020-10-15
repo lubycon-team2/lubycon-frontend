@@ -6,46 +6,43 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 class Header extends Component {
-    // constructor(props) {
-    //     super(props);   
-    // }
+
 
     render() {
         const loginBtn = (
-            <Link to="/login">
-                <div className="loginout">
+            <Link to="/login" className="nav">
+                <button className="loginout">
                     로그인
-                </div>
+                </button>
             </Link>
         );
 
         const logoutBtn = (
-                <button onClick={this.props.onLogout}>
+                <button className="loginout" onClick={this.props.onLogout}>
                     로그아웃
                 </button>
         );
 
         return (
-            <>
+            <div>
                 <div className="main_header">
-                    <div>Partying</div>
+                    <Link to="/" className="nav"><div>Partying</div></Link>
                 </div>
                 <div className="nav_group">
                     <div className="navs">
-                        <a>홈</a>
-                        <a>파티 목록</a>
-                        <a>내 파티</a>
+                        <Link to="/" className="nav">홈</Link>
+                        <Link to="/" className="nav">파티 목록</Link>
+                        <Link to="/party" className="nav">내 파티</Link>
                     </div>
                     { this.props.isLoggedIn ? logoutBtn : loginBtn}
                 </div>
                 <hr className="hr"></hr>
-            </>
+            </div>
         );
     }
 }
 
 Header.propTypes = {
-    classes: PropTypes.object.isRequired,
     isLoggedIn: PropTypes.bool,
     onLogout: PropTypes.func,
 };

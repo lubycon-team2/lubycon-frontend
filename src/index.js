@@ -6,7 +6,7 @@ import './style.scss';
 import { Router, Route, browserHistory, IndexRoute} from 'react-router';
 
 // Container Components 
-import {App, Home, Login, Redirect } from './containers';
+import {App, Home, Login, Redirect, Party } from './containers';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -24,6 +24,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="login" component={Login}/>
+        <Route path="party" component={Party} /> 
         <Route path="oauth2/redirect" component={Redirect}/>
       </Route>
     </Router>

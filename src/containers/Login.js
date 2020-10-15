@@ -3,18 +3,20 @@
 /*eslint-disable-next-line*/
 import React, { Component } from 'react';
 import { loginRequest } from '../actions/authentication';
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.handleKakaoLogin = this.handleKakaoLogin.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
         console.log(this.props.status);
     }
 
-    handleKakaoLogin() {
-        return this.props.loginRequest().then(
+    handleLogin(e) {
+        let sns = e.currentTarget.value;
+        
+        return this.props.loginRequest(sns).then(
             () => {
                 if(this.props.status === "SUCCESS" ) {
                     // create session data
@@ -32,6 +34,7 @@ class Login extends Component {
             }
         )
     }
+
     render() {
         let data = "구독 공유 서비스 파팅에 오신것을 환영합니다!\n무궁무진한 컨텐츠를 새로운 친구들과\n함께 즐길 수 있는 기회를 놓치지 마세요!";
         const addLineBreaks = (data) =>
@@ -45,7 +48,7 @@ class Login extends Component {
             <div>
                 <div className="container" >
                     <div className="header">
-                        <div>Partying</div>
+                        <Link to='/' style={{textDecoration:'none', color:'white'}}><div>Partying</div></Link>
                     </div>
                     <div className="content">
                         <div>
@@ -58,7 +61,7 @@ class Login extends Component {
                     </div>
                     <div className="buttonGroup">
                         <div className="buttons">
-                            <button className="btn_facebook">
+                            <button className="btn_facebook" value="facebook" onClick={this.handleLogin}>
                                 <div className="btn_facebook_group">
                                     <div className="btn_facebook_logo">
                                         <img src={require("../assets/images/facebookLogo.svg")} />
@@ -68,7 +71,7 @@ class Login extends Component {
                                     </div>
                                 </div>
                             </button>
-                            <button className="btn_kakao" onClick={this.handleKakaoLogin}>
+                            <button className="btn_kakao" value="kakao" onClick={this.handleLogin}>
                                 <div className="btn_kakao_group">
                                     <div className="btn_kakao_logo">
                                         <img src={require("../assets/images/kakaotalkLogo.svg")} />
@@ -78,7 +81,7 @@ class Login extends Component {
                                     </div>
                                 </div>
                             </button>
-                            <button className="btn_google">
+                            <button className="btn_google" value="google" onClick={this.handleLogin}>
                                 <div className="btn_google_group">
                                     <div className="btn_google_logo">
                                         <img src={require("../assets/images/googleLogo.svg")} />
@@ -105,8 +108,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginRequest: () => {
-            return dispatch(loginRequest());
+        loginRequest: (sns) => {
+            return dispatch(loginRequest(sns));
         }
     };
 };
