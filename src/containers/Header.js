@@ -1,4 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/alt-text */
+/*eslint-disable-next-line*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
@@ -30,9 +32,9 @@ class Header extends Component {
                 </div>
                 <div className="nav_group">
                     <div className="navs">
-                        <a href="#">홈</a>
-                        <a href="#">파티 목록</a>
-                        <a href="#">내 파티</a>
+                        <a>홈</a>
+                        <a>파티 목록</a>
+                        <a>내 파티</a>
                     </div>
                     { this.props.isLoggedIn ? logoutBtn : loginBtn}
                 </div>

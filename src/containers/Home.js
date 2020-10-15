@@ -3,10 +3,11 @@
 /*eslint-disable-next-line*/
 import React, { Component } from 'react';
 import { loginRequest } from '../actions/authentication';
-// import { browserHistory } from 'react-router';
 // import { Link } from 'react-router';
 import { connect } from 'react-redux';
-//import { FlickingEvent, SelectEvent, ChangeEvent, NeedPanelEvent } from '@egjs/react-flicking';
+import { getStatusRequest, logoutRequest } from '../actions/authentication'; 
+import { browserHistory } from 'react-router';
+import { Header } from '.';
 import Flicking from '@egjs/react-flicking';
 import { Parallax, Fade, AutoPlay } from '@egjs/flicking-plugins';
 
@@ -20,8 +21,77 @@ class Home extends Component {
             plugins: [],
             plug: [],
         }
-        this.plugins = [new Fade(), new AutoPlay(2000, 'NEXT')];
+        this.plugins = [new Fade(), new AutoPlay(3000, 'NEXT')];
         this.plug = [new Parallax("img", 4)];
+        this.handleLogout = this.handleLogout.bind(this);
+    }
+
+    componentDidMount() {
+        // get cookie by name
+        function getCookie(name) {
+          var value = "; " + document.cookie;
+          var parts = value.split("; " + name + "=");
+          if (parts.length === 2) return parts.pop().split(";").shift();
+        } 
+    
+        //get loginData from cookie
+        let loginData = getCookie('key');
+    
+        // if loginData is undefined, do nothing
+        if(typeof loginData === "undefined") return;
+    
+        // decode base64 & parse json
+        loginData = JSON.parse(atob(loginData));
+    
+        // if not logged in, do nothing
+        if(!loginData.isLoggedIn) return;
+    
+        // page refreshed & has a session in cookie,
+        // check whether this cookie is valid or not
+        this.props.getStatusRequest().then(
+          () => {
+            // if session is invalid
+            if(!this.props.valid) {
+              // logout the session
+              loginData = {
+                isLoggedIn: false,
+                accessToken: '',
+              };
+    
+              document.cookie = 'key=' + btoa(JSON.stringify(loginData));
+    
+              // and notify
+              // let $toastContent = $('<span style="color: #FFB4BA">Your session is expired, please log in again</span>');
+              // Materialize.toast($toastContent, 4000);
+            }
+          }
+        );
+    
+    }
+
+    handleLogout() {
+    this.props.logoutRequest();
+    let loginData = {
+        isLoggedIn: false,
+        accessToken: '',
+    }
+
+    document.cookie = 'key= ' + btoa(JSON.stringify(loginData));
+    browserHistory.push('/');
+    // this.props.logoutRequest().then(
+    //   () => {
+    //     // Materialize.toast('안녕히가세요! ', 2000);
+
+    //     // EMPTY SESSION
+    //     let loginData = {
+    //       isLoggedIn: false,
+    //       accessToken: '',
+    //     };
+        
+    //     document.cookie = 'key= ' + btoa(JSON.stringify(loginData));
+    //     browserHistory.push('/');
+    //   }
+    // )
     }
 
     render() {
@@ -53,6 +123,8 @@ class Home extends Component {
         
         return (
             <div>
+                <Header isLoggedIn={this.props.status.isLoggedIn}
+                        onLogout={this.handleLogout} />
                 <div className="main">
                     {/* <div className="main_header">
                         <div>Partying</div>
@@ -78,12 +150,12 @@ class Home extends Component {
                                     className="flicking"
                                     gap={5}
                                     circular={true}
-                                    plugins={this.plug}
+                                    plugins={this.plugins}
                                     >
                                     <div className="panel">
                                         <div className="image-area">
                                             <div className="image-inner-area">
-                                                <img src={require('../assets/images/priceCard.svg')}/>
+                                                <img src={require('../assets/images/pricecard_netflix.svg')}/>
                                             </div>
                                         </div>
                                         <div className="info">
@@ -98,6 +170,7 @@ class Home extends Component {
                                                         </div>
                                                     </div>
                                                     <div className="division_img">
+                                                        <img src={require('../assets/images/divide.svg')}/>
                                                     </div>
                                                 </div>
                                                 <hr className="hr_card"></hr>
@@ -132,12 +205,289 @@ class Home extends Component {
                                         </div>
                                     </div>
                                     <div className="panel">
-                                    <img src="https://naver.github.io/egjs-flicking/images/bg02.jpg" />
+                                        <div className="image-area">
+                                            <div className="image-inner-area">
+                                                <img src={require('../assets/images/pricecard_wave.svg')}/>
+                                            </div>
+                                        </div>
+                                        <div className="info">
+                                            <div className="price_description">
+                                                <div className="price_description_header">
+                                                    <div>
+                                                        <div className="price_description_header_main">
+                                                            웨이브
+                                                        </div>
+                                                        <div className="price_description_header_sub">
+                                                            프리미엄
+                                                        </div>
+                                                    </div>
+                                                    <div className="division_img">
+                                                        <img src={require('../assets/images/divide.svg')}/>
+                                                    </div>
+                                                </div>
+                                                <hr className="hr_card"></hr>
+                                                <div className="price_description_content">
+                                                    <div className="upper">
+                                                        <div className="upper_name">
+                                                            기존 가격
+                                                        </div>
+                                                        <div className="upper_detail">
+                                                            12,900
+                                                        </div>
+                                                    </div>
+                                                    <div className="under">
+                                                        <div className="under_name">
+                                                            인원
+                                                        </div>
+                                                        <div className="under_detail">
+                                                            4
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr className="hr_card"></hr>
+                                                <div className="price_description_footer">
+                                                    <div className="price_description_footer_name">
+                                                        총합
+                                                    </div>
+                                                    <div className="price_description_footer_detail">
+                                                        3,2255원
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="panel">
-                                        <img src="https://naver.github.io/egjs-flicking/images/bg03.jpg"  />
+                                        <div className="image-area">
+                                            <div className="image-inner-area">
+                                                <img src={require('../assets/images/pricecard_watcha.svg')}/>
+                                            </div>
+                                        </div>
+                                        <div className="info">
+                                            <div className="price_description">
+                                                <div className="price_description_header">
+                                                    <div>
+                                                        <div className="price_description_header_main">
+                                                            왓챠
+                                                        </div>
+                                                        <div className="price_description_header_sub">
+                                                            프리미엄
+                                                        </div>
+                                                    </div>
+                                                    <div className="division_img">
+                                                        <img src={require('../assets/images/divide.svg')}/>
+                                                    </div>
+                                                </div>
+                                                <hr className="hr_card"></hr>
+                                                <div className="price_description_content">
+                                                    <div className="upper">
+                                                        <div className="upper_name">
+                                                            기존 가격
+                                                        </div>
+                                                        <div className="upper_detail">
+                                                            12,900
+                                                        </div>
+                                                    </div>
+                                                    <div className="under">
+                                                        <div className="under_name">
+                                                            인원
+                                                        </div>
+                                                        <div className="under_detail">
+                                                            4
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr className="hr_card"></hr>
+                                                <div className="price_description_footer">
+                                                    <div className="price_description_footer_name">
+                                                        총합
+                                                    </div>
+                                                    <div className="price_description_footer_detail">
+                                                        3,225원
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="panel">
+                                        <div className="image-area">
+                                            <div className="image-inner-area">
+                                                <img src={require('../assets/images/pricecard_apple.svg')}/>
+                                            </div>
+                                        </div>
+                                        <div className="info">
+                                            <div className="price_description">
+                                                <div className="price_description_header">
+                                                    <div>
+                                                        <div className="price_description_header_main">
+                                                            애플 뮤직
+                                                        </div>
+                                                        <div className="price_description_header_sub">
+                                                            프리미엄
+                                                        </div>
+                                                    </div>
+                                                    <div className="division_img">
+                                                        <img src={require('../assets/images/divide.svg')}/>
+                                                    </div>
+                                                </div>
+                                                <hr className="hr_card"></hr>
+                                                <div className="price_description_content">
+                                                    <div className="upper">
+                                                        <div className="upper_name">
+                                                            기존 가격
+                                                        </div>
+                                                        <div className="upper_detail">
+                                                            13,300
+                                                        </div>
+                                                    </div>
+                                                    <div className="under">
+                                                        <div className="under_name">
+                                                            인원
+                                                        </div>
+                                                        <div className="under_detail">
+                                                            6
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr className="hr_card"></hr>
+                                                <div className="price_description_footer">
+                                                    <div className="price_description_footer_name">
+                                                        총합
+                                                    </div>
+                                                    <div className="price_description_footer_detail">
+                                                        2,216원
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                             </Flicking>
+                        </div>
+                        <div className="logo_group">
+                            <div className="logos">
+                                <button className="btn_netflix">
+                                    <div className="btn_netflix_logo">
+                                        <img src={require("../assets/images/logo_netflix.png")} />
+                                    </div>
+                                </button>
+                                <button className="btn_wave">
+                                    <div className="btn_wave_logo">
+                                        <img src={require("../assets/images/logo_wave.png")} />
+                                    </div>
+                                </button>
+                                <button className="btn_watcha">
+                                    <div className="btn_watcha_logo">
+                                        <img src={require("../assets/images/logo_watcha.png")} />
+                                    </div>
+                                </button>
+                                <button className="btn_apple">
+                                    <div className="btn_apple_logo">
+                                        <img src={require("../assets/images/logo_netflix.png")} />
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div className="party-group">
+                            <div className="partys">
+                                <button className="btn_party">
+                                    <div className="btn_party_main">
+                                        <div className="btn_party_content">
+                                            <div className="btn_party_content_header">
+                                                애플 뮤직 공유
+                                            </div>
+                                            <div className="btn_party_content_price">
+                                                4,737원
+                                            </div>
+                                            <div className="btn_party_content_footer">
+                                                결제주기 / 12개월
+                                            </div>
+                                        </div>
+                                        <div className="btn_party_footer">
+                                            <div className="arrow">
+                                                <i class="fas fa-angle-right fa-3x"></i>
+                                            </div>
+                                            <div className="party_member">
+                                                <div> 4</div> 
+                                                <div className="total">/6</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                                <button className="btn_party">
+                                    <div className="btn_party_main">
+                                        <div className="btn_party_content">
+                                            <div className="btn_party_content_header">
+                                                애플 뮤직 공유
+                                            </div>
+                                            <div className="btn_party_content_price">
+                                                4,737원
+                                            </div>
+                                            <div className="btn_party_content_footer">
+                                                결제주기 / 12개월
+                                            </div>
+                                        </div>
+                                        <div className="btn_party_footer">
+                                            <div className="arrow">
+                                                <i class="fas fa-angle-right fa-3x"></i>
+                                            </div>
+                                            <div className="party_member">
+                                                <div> 4</div> 
+                                                <div className="total">/6</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>                            
+                        </div>
+                        <div className="view_more">
+                            <div>
+                                <button className="view_more_btn">
+                                    <img src={require("../assets/images/btn_view_more.svg")} />
+                                    <div className="view_more_btn_text">
+                                        더 보기
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div className="join_now">
+                            <button className="btn_join_now">
+                                <div className="btn_join_now_main">
+                                    <div className="btn_join_now_content">
+                                        <div className="btn_join_now_content_img">
+                                            <img src={require("../assets/images/join_circle.svg")} />
+                                        </div>
+                                        <div className="btn_join_now_content_txt">
+                                            Sign in
+                                        </div>
+                                    </div>
+                                    <div className="btn_join_now_describe">
+                                        <div className="login">
+                                            로그인하세요!
+                                        </div>
+                                        <div className="party_member">
+                                            <div className="member_1"> 파티에 참여하기 위해서</div> 
+                                            <div className="member_2">아주 간단한 회원가입이 필요합니다.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="footer">
+                    <div className="footer_content">
+                        <div className="footer_content_txt">
+                            문의메일
+                        </div>
+                        <div className="footer_content_mail">
+                            Summerzet@naver.com
+                        </div>
+                        <div className="footer_content_legal">
+                            <a href="https://www.notion.so/727d24a49df046ba84e42a63f408537d">
+                                개인정보 동의 약관
+                            </a>
+                            <a href="https://www.notion.so/05e1a56e13eb49f29ae614024231333a">
+                                파팅 이용약관 
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -151,6 +501,7 @@ const mapStateToProps = (state) => {
         status: state.authentication.login.status,
         isLoggedIn: state.authentication.status.isLoggedIn,
         accessToken: state.authentication.status.accessToken,
+        valid: state.authentication.status.valid,
     };
 };
 
@@ -158,6 +509,12 @@ const mapDispatchToProps = (dispatch) => {
     return {
         loginRequest: () => {
             return dispatch(loginRequest());
+        },
+        getStatusRequest: () => {
+            return dispatch(getStatusRequest());
+        },
+        logoutRequest: () => {
+        return dispatch(logoutRequest());
         }
     };
 };

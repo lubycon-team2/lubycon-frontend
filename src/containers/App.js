@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header } from '.';
+// import { Header } from '.';
 import { connect } from 'react-redux';
 import { getStatusRequest, logoutRequest } from '../actions/authentication'; 
 import { browserHistory } from 'react-router';
@@ -82,8 +82,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header isLoggedIn={this.props.status.isLoggedIn}
-                onLogout={this.handleLogout} />
+        {/* <Header isLoggedIn={this.props.status.isLoggedIn}
+                onLogout={this.handleLogout} /> */}
         {this.props.children}
       </div>
     );
