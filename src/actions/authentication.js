@@ -11,19 +11,19 @@ import {
 import axios from 'axios';
 
 /* LOGIN */
-export function loginRequest() { 
+export function loginRequest(sns) { 
+    let api = 'https://api.partying.cf/oauth2/authorization/' + sns;
+    console.log('api?', api);
     return (dispatch) => {
         dispatch(login());
 
-        return axios.get('https://api.partying.cf/oauth2/authorization/kakao')
+        return axios.get(api)
             .then((response) => {
-                // dispatch(loginSuccess(response.data.access_token));
-                dispatch(loginSuccess('ababab'));
-                console.log(response);
+                dispatch(loginSuccess(response.data.access_token));
             }).catch((error) => {
                 console.log('error occurred!!!!!!!');
-                dispatch(loginSuccess('ababab'));
-                // dispatch(loginFailure());
+                // dispatch(loginSuccess('ababab'));
+                dispatch(loginFailure());
             });
 
     };

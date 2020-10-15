@@ -5,9 +5,6 @@ import React, { Component } from 'react';
 import { loginRequest } from '../actions/authentication';
 // import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { getStatusRequest, logoutRequest } from '../actions/authentication'; 
-import { browserHistory } from 'react-router';
-import { Header } from '.';
 import Flicking from '@egjs/react-flicking';
 import { Parallax, Fade, AutoPlay } from '@egjs/flicking-plugins';
 
@@ -23,95 +20,11 @@ class Home extends Component {
         }
         this.plugins = [new Fade(), new AutoPlay(3000, 'NEXT')];
         this.plug = [new Parallax("img", 4)];
-        this.handleLogout = this.handleLogout.bind(this);
     }
 
-    componentDidMount() {
-        // get cookie by name
-        function getCookie(name) {
-          var value = "; " + document.cookie;
-          var parts = value.split("; " + name + "=");
-          if (parts.length === 2) return parts.pop().split(";").shift();
-        } 
     
-        //get loginData from cookie
-        let loginData = getCookie('key');
-    
-        // if loginData is undefined, do nothing
-        if(typeof loginData === "undefined") return;
-    
-        // decode base64 & parse json
-        loginData = JSON.parse(atob(loginData));
-    
-        // if not logged in, do nothing
-        if(!loginData.isLoggedIn) return;
-    
-        // page refreshed & has a session in cookie,
-        // check whether this cookie is valid or not
-        this.props.getStatusRequest().then(
-          () => {
-            // if session is invalid
-            if(!this.props.valid) {
-              // logout the session
-              loginData = {
-                isLoggedIn: false,
-                accessToken: '',
-              };
-    
-              document.cookie = 'key=' + btoa(JSON.stringify(loginData));
-    
-              // and notify
-              // let $toastContent = $('<span style="color: #FFB4BA">Your session is expired, please log in again</span>');
-              // Materialize.toast($toastContent, 4000);
-            }
-          }
-        );
-    
-    }
-
-    handleLogout() {
-    this.props.logoutRequest();
-    let loginData = {
-        isLoggedIn: false,
-        accessToken: '',
-    }
-
-    document.cookie = 'key= ' + btoa(JSON.stringify(loginData));
-    browserHistory.push('/');
-    // this.props.logoutRequest().then(
-    //   () => {
-    //     // Materialize.toast('안녕히가세요! ', 2000);
-
-    //     // EMPTY SESSION
-    //     let loginData = {
-    //       isLoggedIn: false,
-    //       accessToken: '',
-    //     };
-        
-    //     document.cookie = 'key= ' + btoa(JSON.stringify(loginData));
-    //     browserHistory.push('/');
-    //   }
-    // )
-    }
 
     render() {
-        // this.plugins = [new Fade(), new AutoPlay(2000, 'NEXT')];
-        // const loginBtn = (
-        //     <Link className="loginout" to="/login">
-        //         로그인
-        //     </Link>
-        // );
-
-        // const logoutBtn = (
-        //     <div className="loginout">
-        //         <li>
-        //             <a onClick={this.props.onLogout}>
-        //                 <span>로그아웃</span>
-        //             </a>
-        //         </li>
-        //     </div>
-        // );
-
         let data = "친구들과 편리하게, 새로운 사람과도 안전하게,\n구독하는 서비스를 한눈에";
         const addLineBreaks = (data) =>
             data.split('\n').map((text, index) => (
@@ -123,21 +36,7 @@ class Home extends Component {
         
         return (
             <div>
-                <Header isLoggedIn={this.props.status.isLoggedIn}
-                        onLogout={this.handleLogout} />
                 <div className="main">
-                    {/* <div className="main_header">
-                        <div>Partying</div>
-                    </div>
-                    <div className="nav_group">
-                        <div className="navs">
-                            <a>홈</a>
-                            <a>파티 목록</a>
-                            <a>내 파티</a>
-                        </div>
-                        { this.props.isLoggedIn ? logoutBtn : loginBtn}
-                    </div>
-                    <hr className="hr"></hr> */}
                     <div className="main_content">
                         <div className="description">
                             구독료를 가볍게, 파팅
@@ -403,7 +302,7 @@ class Home extends Component {
                                         </div>
                                         <div className="btn_party_footer">
                                             <div className="arrow">
-                                                <i class="fas fa-angle-right fa-3x"></i>
+                                                <img src={require('../assets/images/right_arrow2x.png')} />
                                             </div>
                                             <div className="party_member">
                                                 <div> 4</div> 
@@ -427,7 +326,7 @@ class Home extends Component {
                                         </div>
                                         <div className="btn_party_footer">
                                             <div className="arrow">
-                                                <i class="fas fa-angle-right fa-3x"></i>
+                                                <img src={require('../assets/images/right_arrow2x.png')} />
                                             </div>
                                             <div className="party_member">
                                                 <div> 4</div> 
@@ -501,7 +400,6 @@ const mapStateToProps = (state) => {
         status: state.authentication.login.status,
         isLoggedIn: state.authentication.status.isLoggedIn,
         accessToken: state.authentication.status.accessToken,
-        valid: state.authentication.status.valid,
     };
 };
 
@@ -510,12 +408,6 @@ const mapDispatchToProps = (dispatch) => {
         loginRequest: () => {
             return dispatch(loginRequest());
         },
-        getStatusRequest: () => {
-            return dispatch(getStatusRequest());
-        },
-        logoutRequest: () => {
-        return dispatch(logoutRequest());
-        }
     };
 };
 

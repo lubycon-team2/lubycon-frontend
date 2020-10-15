@@ -31,6 +31,30 @@ body {
   margin: auto;
 }
 
+.nav {
+  text-decoration: none;
+}
+
+.nav:focus {
+  font-weight: bold;
+  color: #555553;
+}
+
+.loginout {
+  border-radius: 20px;
+  border: none;
+  font-family: IBMPlexSans;
+  color: #a07cfc;
+  height: 26px;
+  width: 70px;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+}
+
 .container {
     background-color: #a07cfc;
     height: 100vh;
@@ -756,6 +780,126 @@ body {
   border: 0.5px solid #e3dac9;
   width: 94%;
   opacity: 0.3;
+}
+
+.myparty {
+  .profile {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 5% 5%;
+
+    &_info {
+      font-family: IBMPlexSans-Medium;
+      position: relative;
+      left: -3%;
+      align-items: center;
+
+      .name {
+        position: relative;
+        top: 6%;
+        font-family: IBMPlexSans;
+        font-size: 16px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        text-align: left;
+        color: #555553;
+        border: none;
+        background-color: white;
+      }
+
+      .email {
+        position: relative;
+        top: -5%;
+        font-size: 12px;
+        font-weight: 300;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2;
+        letter-spacing: normal;
+        text-align: left;
+        color: #555553;      
+      }
+    }
+
+    &_start {
+      .make_party {
+        position: relative;
+        top: 10%;
+        border-radius: 20px;
+        border: none;
+        width: 100px;
+        height: 35px;
+        font-family: IBMPlexSans;
+        font-size: 12px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.57;
+        letter-spacing: normal;
+        color: #525252;
+      }
+      
+    }
+  }
+
+  .party_list {
+    font-family: IBMPlexSans;
+    font-size: 14px;
+
+    .party_kinds {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      margin: 6% 24%;
+      align-items: center;
+
+      .current_party {
+        font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2.29;
+        letter-spacing: normal;
+        text-align: center;
+        color: #b4b4af;
+        text-decoration: none;
+      }
+
+      .current_party:focus {
+        color: #121212;
+        font-weight: bold;
+      }
+
+      .vl {
+        border-left: 2px solid #b4b4af;
+        height: 18px;
+      }
+
+      .end_party {
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2.29;
+        letter-spacing: normal;
+        text-align: center;
+        color: #b4b4af;
+        text-decoration: none;
+      }
+
+      .end_party:focus {
+        color: #121212;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .party_list_detail {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @font-face {
