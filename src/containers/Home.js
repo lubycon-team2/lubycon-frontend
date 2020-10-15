@@ -51,7 +51,7 @@ class Home extends Component {
         this.props.getStatusRequest().then(
           () => {
             // if session is invalid
-            if(!this.props.status.valid) {
+            if(!this.props.valid) {
               // logout the session
               loginData = {
                 isLoggedIn: false,
@@ -501,7 +501,7 @@ const mapStateToProps = (state) => {
         status: state.authentication.login.status,
         isLoggedIn: state.authentication.status.isLoggedIn,
         accessToken: state.authentication.status.accessToken,
-        status: state.authentication.status,
+        valid: state.authentication.status.valid,
     };
 };
 
