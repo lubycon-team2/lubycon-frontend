@@ -74,7 +74,7 @@ body {
     .buttonGroup {
       position: relative;
       top: -140px;
-      height: 100vh;
+      height: 42vh;
       background-color: white;
 
       .buttons {
@@ -237,6 +237,281 @@ body {
         color: #6e6e69;
       }
     }
+  
+  .logo_group {
+    margin-top: 8%;
+
+    .logos {
+      display: flex;
+      justify-content: space-around;
+      
+      button {
+        height: 70px;
+        width: 70px;
+        border-radius: 8px;
+        border: none;
+      }
+
+      button:hover {
+        background-color: #dcdcdc;
+      }
+
+      button:active {
+        background-color: #dcdcdc;
+      }
+      
+      .btn_netflix:hover {
+        border: 2px solid #c90016;
+      }
+
+      .btn_netflix:focus {
+        border: 2px solid #c90016;
+      }
+
+      .btn_wave:hover {
+        border: 2px solid blue;
+      }
+
+      .btn_wave:focus {
+        border: 2px solid blue;
+      }
+
+      .btn_watcha:hover {
+        border: 2px solid #e32636;
+      }
+
+      .btn_watcha:active {
+        border: 2px solid #e32636;
+      }
+
+      .btn_apple:hover {
+        border: 2px solid #a2a2d0;
+      }
+
+      .btn_apple:active {
+        border: 2px solid #a2a2d0;
+      }
+    }
+  }
+
+  .party-group {
+    margin-top: 5%;
+
+    .partys {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      margin: 5px 5px;
+
+      button {
+        border-radius: 8px;
+        border: none;
+      }
+
+      .btn_party {
+        margin: inherit;
+
+        &_main {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+          margin: 7% 4%;
+          font-family: IBMPlexSans-Bold;
+          text-align: left;
+
+          .btn_party_content {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+
+            &_header {
+              font-size: 18px;
+              font-weight: 600;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: 1.78;
+              letter-spacing: normal;
+              color: #52524e;
+            }
+
+            &_price {
+              font-size: 26px;
+              color: #292929;
+            }
+
+            &_footer {
+              font-size: 12px;
+              font-weight: 600;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: 2.67;
+              letter-spacing: normal;
+              color: #938d9a;
+
+              
+            }
+          }
+        }
+
+        &_footer {
+          align-items: right;
+
+          .arrow {
+            position: relative;
+            left: 30%;
+          }
+
+          .party_member {
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            top: 12%;
+            left: -30%;
+            font-size: xx-large;
+
+            .total {
+              color: #c9c9c9;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .view_more {
+    margin: 3% 4%;
+    display: flex;
+    justify-content: center;
+    height: 40px;
+
+    &_btn {
+      display: contents;
+      border-radius: 9px;
+      border: none;
+      background-color: #a07cfc;
+      
+      &_text {
+        position: relative;
+        top: -82%;
+        color: white;
+        font-family: IBMPlexSans;
+        font-size: 16px;
+        font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.25;
+        letter-spacing: 0.16px;
+      }
+    }
+  }
+
+  .join_now {
+    margin: 5px 5px;
+    display: flex;
+    justify-content: center;
+
+    button {
+      border-radius: 25px;
+      border: none;
+      // margin-left: 5%;
+      // margin-right: 5%;
+      margin: inherit;
+      width: 99%;
+    }
+    
+    .btn_join_now_main {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      margin: 6%;
+
+      .btn_join_now_content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          position: relative;
+          left: -15%;
+        }
+        &_txt {
+          position: relative;
+          width: max-content;
+          top: -5%;
+          left: -59%;
+          color: #a07cfc;
+          font-family: IBMPlexSans-Bold;
+          font-size: 16px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.38;
+          letter-spacing: normal;
+        }
+      }
+
+      .btn_join_now_describe {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        text-align: left;
+        position: relative;
+        right: 15%;
+
+        .login {
+          font-family: IBMPlexSans;
+          font-size: 15px;
+          font-weight: 600;
+          color: #313131;
+        }
+
+        .party_member {
+          width: max-content;
+          font-family: IBMPlexSans;
+          color: #313131;
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: #4a4a4a;
+  height: 27vh;
+
+  &_content {
+    text-align: center;
+    margin: 5%; 
+    padding-top: 7%;
+    font-family: IBMPlexSans;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    &_txt {
+      color: #bcbcba;
+      font-size: 14px;
+    } 
+
+    &_mail {
+      color: #bcbcba;
+    }
+
+    &_legal {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      color: #a07cfc;
+      font-size: 13px;
+      margin-top: 2%;
+      
+      a {
+        color: #a07cfc;
+      }
+    }
+  }
 }
 
 .plugins {
@@ -301,10 +576,13 @@ body {
             }
     
             .division_img {
-              background-image: url('../src/assets/images/divide.svg');
-              background-repeat: no-repeat;
-              background-position: right;
-              height: 20px;
+              img {
+                height: 20px;
+                top: -100%;
+                bottom: -25%;
+                left: 90%;
+                right: -8%;
+              }
             }
           }
 
@@ -480,27 +758,37 @@ body {
   opacity: 0.3;
 }
 
-  @font-face {
-    font-family: "Lato Bold";
-    src: url('../src/assets/fonts/Lato-Bold.ttf') format('truetype');
-  }
+@font-face {
+  font-family: "Lato Bold";
+  src: url('../src/assets/fonts/Lato-Bold.ttf') format('truetype');
+}
 
-  @font-face {
-    font-family: "Spoqa Han Sans";
-    src: url('../src/assets/fonts/SpoqaHanSansRegular.ttf') format('truetype');
-  }
+@font-face {
+  font-family: "Spoqa Han Sans";
+  src: url('../src/assets/fonts/SpoqaHanSansRegular.ttf') format('truetype');
+}
 
-  @font-face {
-    font-family: "YoonGothic740";
-    src: url('../src/assets/fonts/YoonGothicPro740.woff.ttf') format('truetype');
-  }
+@font-face {
+  font-family: "YoonGothic740";
+  src: url('../src/assets/fonts/YoonGothicPro740.woff.ttf') format('truetype');
+}
 
-  @font-face {
-    font-family: "IBMPlexSans-Medium";
-    src: url('../src/assets/fonts/IBMPlexSans-Medium.ttf') format('truetype');
-  }
+@font-face {
+  font-family: "IBMPlexSans-Medium";
+  src: url('../src/assets/fonts/IBMPlexSans-Medium.ttf') format('truetype');
+}
 
-  @font-face {
-    font-family: "IBMPlexSans-Bold";
-    src: url('../src/assets/fonts/IBMPlexSans-Bold.ttf') format('truetype');
-  }
+@font-face {
+  font-family: "IBMPlexSans-Bold";
+  src: url('../src/assets/fonts/IBMPlexSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "IBMPlexSans-SemiBold";
+  src: url('../src/assets/fonts/IBMPlexSans-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "IBMPlexSans";
+  src: url('../src/assets/fonts/IBMPlexSans-Regular.ttf') format('truetype');
+}
