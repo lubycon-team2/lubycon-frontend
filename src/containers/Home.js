@@ -3,7 +3,7 @@
 /*eslint-disable-next-line*/
 import React, { Component } from 'react';
 import { loginRequest } from '../actions/authentication';
-// import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import Flicking from '@egjs/react-flicking';
 import { Parallax, Fade, AutoPlay } from '@egjs/flicking-plugins';
@@ -20,9 +20,12 @@ class Home extends Component {
         }
         this.plugins = [new Fade(), new AutoPlay(3000, 'NEXT')];
         this.plug = [new Parallax("img", 4)];
+        this.routeChange = this.routeChange.bind(this);
     }
 
-    
+    routeChange() {
+        browserHistory.push('/login');
+    }
 
     render() {
         let data = "친구들과 편리하게, 새로운 사람과도 안전하게,\n구독하는 서비스를 한눈에";
@@ -279,8 +282,8 @@ class Home extends Component {
                                     </div>
                                 </button>
                                 <button className="btn_apple">
-                                    <div className="btn_apple_logo">
-                                        <img src={require("../assets/images/logo_netflix.png")} />
+                                    <div className="btn_apple_logo" style={{backgroundImage: 'linear-gradient(91deg, #ff76af -127%, #c8a2ff 8%, #5c97ff 153%);'}}>
+                                        {/* <img src={require("../assets/images/logo_netflix.png")} /> */}
                                     </div>
                                 </button>
                             </div>
@@ -348,27 +351,27 @@ class Home extends Component {
                             </div>
                         </div>
                         <div className="join_now">
-                            <button className="btn_join_now">
-                                <div className="btn_join_now_main">
-                                    <div className="btn_join_now_content">
-                                        <div className="btn_join_now_content_img">
-                                            <img src={require("../assets/images/join_circle.svg")} />
+                                <button className="btn_join_now" onClick={this.routeChange}>
+                                    <div className="btn_join_now_main">
+                                        <div className="btn_join_now_content">
+                                            <div className="btn_join_now_content_img">
+                                                <img src={require("../assets/images/join_circle.svg")} />
+                                            </div>
+                                            <div className="btn_join_now_content_txt">
+                                                Sign in
+                                            </div>
                                         </div>
-                                        <div className="btn_join_now_content_txt">
-                                            Sign in
+                                        <div className="btn_join_now_describe">
+                                            <div className="login">
+                                                로그인하세요!
+                                            </div>
+                                            <div className="party_member">
+                                                <div className="member_1"> 파티에 참여하기 위해서</div> 
+                                                <div className="member_2">아주 간단한 회원가입이 필요합니다.</div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="btn_join_now_describe">
-                                        <div className="login">
-                                            로그인하세요!
-                                        </div>
-                                        <div className="party_member">
-                                            <div className="member_1"> 파티에 참여하기 위해서</div> 
-                                            <div className="member_2">아주 간단한 회원가입이 필요합니다.</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </button>
+                                </button>
                         </div>
                     </div>
                 </div>
