@@ -36,6 +36,32 @@ class Home extends Component {
                 <br />
                 </React.Fragment>
         ));
+
+        const doLoginBtn = (
+            <div className="join_now">
+                <button className="btn_join_now" onClick={this.routeChange}>
+                    <div className="btn_join_now_main">
+                        <div className="btn_join_now_content">
+                            <div className="btn_join_now_content_img">
+                                <img src={require("../assets/images/join_circle.svg")} />
+                            </div>
+                            <div className="btn_join_now_content_txt">
+                                Sign in
+                            </div>
+                        </div>
+                        <div className="btn_join_now_describe">
+                            <div className="login">
+                                로그인하세요!
+                            </div>
+                            <div className="party_member">
+                                <div className="member_1"> 파티에 참여하기 위해서</div> 
+                                <div className="member_2">아주 간단한 회원가입이 필요합니다.</div>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        );
         
         return (
             <div>
@@ -350,29 +376,8 @@ class Home extends Component {
                                 </button>
                             </div>
                         </div>
-                        <div className="join_now">
-                                <button className="btn_join_now" onClick={this.routeChange}>
-                                    <div className="btn_join_now_main">
-                                        <div className="btn_join_now_content">
-                                            <div className="btn_join_now_content_img">
-                                                <img src={require("../assets/images/join_circle.svg")} />
-                                            </div>
-                                            <div className="btn_join_now_content_txt">
-                                                Sign in
-                                            </div>
-                                        </div>
-                                        <div className="btn_join_now_describe">
-                                            <div className="login">
-                                                로그인하세요!
-                                            </div>
-                                            <div className="party_member">
-                                                <div className="member_1"> 파티에 참여하기 위해서</div> 
-                                                <div className="member_2">아주 간단한 회원가입이 필요합니다.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
-                        </div>
+                        {this.props.isLoggedIn === true ? undefined : doLoginBtn}
+                        
                     </div>
                 </div>
                 <div className="footer">
