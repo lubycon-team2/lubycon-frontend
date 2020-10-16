@@ -56,9 +56,11 @@ body {
   letter-spacing: normal;
 }
 
+.first_main {
+  height: 100vh;
+}
 .container {
     background-color: #a07cfc;
-    height: 100vh;
 
     .header {
       color: #ffffff;
@@ -95,83 +97,72 @@ body {
       padding-top: 39.8px;
       margin-right: 29px;
     }
+  }
 
-    .buttonGroup {
+  .buttonGroup {
+    position: relative;
+    top: -140px;
+    background-color: white;
+
+    .buttons {
       position: relative;
-      top: -140px;
-      height: 42vh;
-      background-color: white;
+      top: 2%;
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column; /* 세로 */
+      align-items: center; 
 
-      .buttons {
-        position: relative;
-        top: 2%;
-        display: flex;
-        justify-content: space-evenly;
-        flex-direction: column; /* 세로 */
-        align-items: center; 
+      .btn {
+        &_facebook {
+          @include button(#4185d8, white);
+          margin: 10% 5%;
+          margin-bottom: 3%;
 
-        .btn {
-          &_facebook {
-            @include button(#4185d8, white);
-
-            &_group {
-              @include buttonGroup();
-            }
-
-            &_logo {
-              @include buttonLogo();
-            }
-
-            &_name {
-              @include buttonName();
-            }
+          &_group {
+            @include buttonGroup();
           }
 
-          &_kakao {
-            @include button(#ffd77c, black);
-
-            &_group {
-              @include buttonGroup();
-            }
-
-            &_logo {
-              @include buttonLogo();
-            }
-
-            &_name {
-              @include buttonName();
-            }
+          &_logo {
+            @include buttonLogo();
           }
 
-          &_google {
-            @include button(#eb5864, white);
+          &_name {
+            @include buttonName();
+          }
+        }
 
-            &_group {
-              @include buttonGroup();
-            }
+        &_kakao {
+          @include button(#ffd77c, black);
 
-            &_logo {
-              @include buttonLogo();
-            }
+          &_group {
+            @include buttonGroup();
+          }
 
-            &_name {
-              @include buttonName();
-            }
+          &_logo {
+            @include buttonLogo();
+          }
+
+          &_name {
+            @include buttonName();
+          }
+        }
+
+        &_google {
+          @include button(#eb5864, white);
+
+          &_group {
+            @include buttonGroup();
+          }
+
+          &_logo {
+            @include buttonLogo();
+          }
+
+          &_name {
+            @include buttonName();
           }
         }
       }
-
-      // @media ( min-width: 380px ) {
-      //   .buttons {
-      //     position: relative;
-      //     top: 15%;
-      //     display: flex;
-      //     justify-content: space-evenly;
-      //     flex-direction: row; /* 가로 */
-      //     align-items: center;
-      //     margin: auto 0;
-      //   }
-      // }
     }
   }
 

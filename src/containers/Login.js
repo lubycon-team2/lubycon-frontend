@@ -46,7 +46,7 @@ class Login extends Component {
                 </React.Fragment>
         ));
         return (
-            <div>
+            <div className="first_main">
                 <div className="container" >
                     <div className="header">
                         <Link to='/' style={{textDecoration:'none', color:'white'}}><div>Partying</div></Link>
@@ -60,39 +60,39 @@ class Login extends Component {
                         <div className="backgroundImage">
                         </div>
                     </div>
-                    <div className="buttonGroup">
-                        <div className="buttons">
-                            <button className="btn_facebook" value="facebook" onClick={this.handleLogin}>
-                                <div className="btn_facebook_group">
-                                    <div className="btn_facebook_logo">
-                                        <img src={require("../assets/images/facebookLogo.svg")} />
-                                    </div>
-                                    <div className="btn_facebook_name">
-                                        페이스북으로 로그인
-                                    </div>
+                </div>
+                <div className="buttonGroup">
+                    <div className="buttons">
+                        <button className="btn_facebook" value="facebook" onClick={this.handleLogin}>
+                            <div className="btn_facebook_group">
+                                <div className="btn_facebook_logo">
+                                    <img src={require("../assets/images/facebookLogo.svg")} />
                                 </div>
-                            </button>
-                            <button className="btn_kakao" value="kakao" onClick={this.handleLogin}>
-                                <div className="btn_kakao_group">
-                                    <div className="btn_kakao_logo">
-                                        <img src={require("../assets/images/kakaotalkLogo.svg")} />
-                                    </div>
-                                    <div className="btn_kakao_name">
-                                        카카오톡으로 로그인
-                                    </div>
+                                <div className="btn_facebook_name">
+                                    페이스북으로 로그인
                                 </div>
-                            </button>
-                            <button className="btn_google" value="google" onClick={this.handleLogin}>
-                                <div className="btn_google_group">
-                                    <div className="btn_google_logo">
-                                        <img src={require("../assets/images/googleLogo.svg")} />
-                                    </div>
-                                    <div className="btn_google_name">
-                                        구글로 로그인
-                                    </div>
+                            </div>
+                        </button>
+                        <button className="btn_kakao" value="kakao" onClick={this.handleLogin}>
+                            <div className="btn_kakao_group">
+                                <div className="btn_kakao_logo">
+                                    <img src={require("../assets/images/kakaotalkLogo.svg")} />
                                 </div>
-                            </button>
-                        </div>
+                                <div className="btn_kakao_name">
+                                    카카오톡으로 로그인
+                                </div>
+                            </div>
+                        </button>
+                        <button className="btn_google" value="google" onClick={this.handleLogin}>
+                            <div className="btn_google_group">
+                                <div className="btn_google_logo">
+                                    <img src={require("../assets/images/googleLogo.svg")} />
+                                </div>
+                                <div className="btn_google_name">
+                                    구글로 로그인
+                                </div>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>
