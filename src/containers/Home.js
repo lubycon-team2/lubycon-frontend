@@ -308,7 +308,7 @@ class Home extends Component {
                                     </div>
                                 </button>
                                 <button className="btn_apple">
-                                    <div className="btn_apple_logo" style={{backgroundImage: 'linear-gradient(91deg, #ff76af -127%, #c8a2ff 8%, #5c97ff 153%);'}}>
+                                    <div className="btn_apple_logo">
                                         {/* <img src={require("../assets/images/logo_netflix.png")} /> */}
                                     </div>
                                 </button>
