@@ -19,7 +19,7 @@ class PhoneAuth extends Component {
 
         if (phoneNum.length > 11) {
             e.target.value = phoneNum.toString().substr(0, 11);
-        } else if (phoneNum.length === 11) {
+        } else {
             this.setState({
                 phoneNum: e.target.value,
             })
