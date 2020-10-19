@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /*eslint-disable-next-line*/
 import React, { Component } from 'react';
-import { loginRequest } from '../actions/authentication';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import Flicking from '@egjs/react-flicking';
@@ -13,7 +12,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
         // console.log('isLoggedIn', this.props.isLoggedIn);
-        // console.log('accessToken', this.props.accessToken);
+        console.log('accessToken', this.props.accessToken);
         this.state = {
             plugins: [],
             plug: [],
@@ -21,6 +20,12 @@ class Home extends Component {
         this.plugins = [new Fade(), new AutoPlay(2000, 'NEXT')];
         this.plug = [new Parallax("img", 4)];
         this.routeChange = this.routeChange.bind(this);
+    }
+
+    componentDidUpdate() {
+        if (this.props.accessToken) {
+            localStorage.setItem('access_token', this.props.accessToken);
+        }
     }
 
     routeChange() {
@@ -414,9 +419,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginRequest: () => {
-            return dispatch(loginRequest());
-        },
     };
 };
 

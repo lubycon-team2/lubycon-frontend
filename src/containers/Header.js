@@ -3,10 +3,22 @@
 /*eslint-disable-next-line*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import { logoutRequest } from '../actions/authentication';
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.handleLogout = this.handleLogout.bind(this);
+    }
 
+    handleLogout() {
+        this.props.logoutRequest().then(() => {
+            localStorage.setItem('access_token', '');
+            browserHistory.push('/');
+        })
+    }
 
     render() {
         const loginBtn = (
@@ -52,5 +64,19 @@ Header.defaultProps = {
     onLogout: () => { console.error("logout function not defined"); }
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+    return {
+    };
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      logoutRequest: () => {
+        return dispatch(logoutRequest());
+      }
+    };
+  };
+  
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
