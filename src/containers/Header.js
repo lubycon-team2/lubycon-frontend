@@ -14,10 +14,10 @@ class Header extends Component {
     }
 
     handleLogout() {
-        this.props.logoutRequest().then(() => {
-            localStorage.clear();
-            browserHistory.push('/');
-        })
+        this.props.logoutRequest();
+        localStorage.clear();
+        browserHistory.push('/');
+
     }
 
     render() {

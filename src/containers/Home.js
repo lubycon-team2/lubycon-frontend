@@ -13,7 +13,6 @@ class Home extends Component {
         super(props);
         // console.log('isLoggedIn', this.props.isLoggedIn);
         console.log('accessToken', this.props.accessToken);
-        console.log('localStorage Check', localStorage.getItem('accessToken'))
         this.state = {
             plugins: [],
         }
