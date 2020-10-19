@@ -28,21 +28,9 @@ export default function authentication(state, action) {
         case types.AUTH_GET_STATUS: // 쿠키에 세션이 저장된 상태에서, 새로고침했을 때만 실행됨 
             return update(state, {
                 status: {
-                    isLoggedIn: { $set: true }
-                }
-            });
-        case types.AUTH_GET_STATUS_SUCCESS:
-            return update(state, {
-                status: {
+                    isLoggedIn: { $set: true },
                     valid: { $set: true },
                     accessToken: { $set: action.accessToken },
-                }
-            });
-        case types.AUTH_GET_STATUS_FAILURE:
-            return update(state, {
-                status: {
-                    valid: { $set: false },
-                    isLoggedin: { $set: false }
                 }
             });
         // LOGOUT

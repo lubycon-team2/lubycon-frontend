@@ -12,7 +12,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
         // console.log('isLoggedIn', this.props.isLoggedIn);
-        console.log('accessToken', this.props.accessToken);
+        // console.log('accessToken', this.props.accessToken);
         this.state = {
             plugins: [],
         }
