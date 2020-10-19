@@ -5,5 +5,6 @@ import Redirect from './Redirect';
 import Header from './Header';
 import Party from './Party';
 import NewParty from './NewParty';
+import PhoneAuth from './PhoneAuth';
 
-export { App, Home, Login, Redirect, Header, Party, NewParty };
+export { App, Home, Login, Redirect, Header, Party, NewParty, PhoneAuth };

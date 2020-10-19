@@ -944,6 +944,16 @@ body {
         height: 40px;
         border: none;
       }
+
+      .submit:disabled {
+        background-color: #b2beb5;
+        color: white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 108px;
+        height: 40px;
+        border: none;
+      }
     }
 
     &_auth {
