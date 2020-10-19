@@ -8,17 +8,6 @@ import { connect } from 'react-redux';
 import { logoutRequest } from '../actions/authentication';
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.handleLogout = this.handleLogout.bind(this);
-    }
-
-    handleLogout() {
-        this.props.logoutRequest();
-        localStorage.clear();
-        browserHistory.push('/');
-
-    }
 
     render() {
         const loginBtn = (

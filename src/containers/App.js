@@ -66,28 +66,9 @@ class App extends Component {
 
   handleLogout() {
     this.props.logoutRequest();
-    let loginData = {
-      isLoggedIn: false,
-      accessToken: '',
-    }
-
-    document.cookie = 'key= ' + btoa(JSON.stringify(loginData));
+    localStorage.clear();
     browserHistory.push('/');
-    // this.props.logoutRequest().then(
-    //   () => {
-    //     // Materialize.toast('안녕히가세요! ', 2000);
-
-    //     // EMPTY SESSION
-    //     let loginData = {
-    //       isLoggedIn: false,
-    //       accessToken: '',
-    //     };
-        
-    //     document.cookie = 'key= ' + btoa(JSON.stringify(loginData));
-    //     browserHistory.push('/');
-    //   }
-    // )
-  }
+  } 
   
   render() {
     return (

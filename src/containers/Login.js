@@ -16,23 +16,6 @@ class Login extends Component {
         let sns = e.currentTarget.value;
         let api = 'https://api.partying.cf/oauth2/authorization/' + sns;
         window.location.replace(api);
-        // return this.props.loginRequest(sns).then(
-        //     () => {
-        //         if(this.props.status === "SUCCESS" ) {
-        //             // create session data
-        //             let loginData = {
-        //                 isLoggedIn: true,
-        //                 accessToken: this.props.accessToken,
-        //             };
-        //             document.cookie = 'key=' + btoa(JSON.stringify(loginData)); // save session data in cookie 
-        //             console.log(this.props.accessToken);
-        //             browserHistory.push('/'); 
-        //             return true;
-        //         } else {
-        //             return false;
-        //         }
-        //     }
-        // )
     }
 
     render() {
