@@ -1,7 +1,4 @@
 import {
-    AUTH_LOGIN,
-    AUTH_LOGIN_SUCCESS,
-    AUTH_LOGIN_FAILURE,
     ACCESS_TOKEN_SAVE,
     AUTH_GET_STATUS,
     AUTH_GET_STATUS_SUCCESS,
@@ -10,49 +7,11 @@ import {
 } from './ActionTypes';
 import axios from 'axios';
 
-/* LOGIN */
-export function loginRequest(sns) { 
-    let api = 'https://api.partying.cf/oauth2/authorization/' + sns;
-    console.log('api?', api);
-    return (dispatch) => {
-        dispatch(login());
-
-        return axios.get(api)
-            .then((response) => {
-                dispatch(loginSuccess(response.data.access_token));
-            }).catch((error) => {
-                console.log('error occurred!!!!!!!');
-                // dispatch(loginSuccess('ababab'));
-                dispatch(loginFailure());
-            });
-
-    };
-}
-
-export function login() {
-    return {
-        type: AUTH_LOGIN
-    };
-}
-
-export function loginSuccess(accessToken) {
-    return {
-        type: AUTH_LOGIN_SUCCESS,
-        accessToken
-    };
-}
-
-export function loginFailure() {
-    return {
-        type: AUTH_LOGIN_FAILURE
-    };
-}
 
 /* ACCESS_TOKEN_SAVE */
 export function tokensaveRequest(accessToken) {
     return (dispatch) => {
         dispatch(tokenSave(accessToken));
-
     }
 }
 
@@ -101,7 +60,6 @@ export function getStatusFailure() {
 export function logoutRequest() {
     return (dispatch) => {
         dispatch(logout());
-        return ;
     };
 }
 

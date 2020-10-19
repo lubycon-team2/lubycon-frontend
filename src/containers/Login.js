@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /*eslint-disable-next-line*/
 import React, { Component } from 'react';
-import { loginRequest } from '../actions/authentication';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
@@ -109,9 +108,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginRequest: (sns) => {
-            return dispatch(loginRequest(sns));
-        }
     };
 };
 
