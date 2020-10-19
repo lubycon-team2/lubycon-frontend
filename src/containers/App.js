@@ -29,6 +29,9 @@ class App extends Component {
     //     // this.props.status.isLoggedIn = true;
     //     }
     // );
+    this.props.getStatusRequest(localStorage.getItem('accessToken')).then(() => {
+
+    });
 
   }
 
@@ -58,8 +61,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getStatusRequest: () => {
-      return dispatch(getStatusRequest());
+    getStatusRequest: (token) => {
+      return dispatch(getStatusRequest(token));
     },
     logoutRequest: () => {
       return dispatch(logoutRequest());
