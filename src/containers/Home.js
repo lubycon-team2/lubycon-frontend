@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import Flicking from '@egjs/react-flicking';
-import { Parallax, Fade, AutoPlay } from '@egjs/flicking-plugins';
+import { Fade, AutoPlay } from '@egjs/flicking-plugins';
 
 
 class Home extends Component {
