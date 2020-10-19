@@ -3,6 +3,7 @@ import {
     AUTH_GET_STATUS,
     AUTH_LOGOUT,
 } from './ActionTypes';
+import axios from 'axios';
 
 /* ACCESS_TOKEN_SAVE */
 export function tokensaveRequest(accessToken) {
@@ -19,9 +20,20 @@ export function tokenSave(accessToken) {
 }
 
 /* GET STATUS */
-export function getStatusRequest() {
+export function getStatusRequest(token) {
     return (dispatch) => {
-        dispatch(getStatus(localStorage.getItem('access_token')));
+        dispatch(getStatus());
+        console.log('haha', token);
+        return axios.get('https://api.partying.cf/profiles/me', {headers: {
+            Authorization: 'Bearer ' + JSON.stringify(token)
+        }})
+            .then((response) => {
+                // dispatch(getStatusSuccess(response.data));
+                console.log('response data', response.data);
+            }).catch((error) => {
+                // dispatch(getStatusFailure());
+                console.error();
+            });
     };
 }
 

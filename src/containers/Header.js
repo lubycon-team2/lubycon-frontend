@@ -10,6 +10,7 @@ import { logoutRequest } from '../actions/authentication';
 class Header extends Component {
 
     render() {
+        console.log('loginstatus', this.props.isLoggedIn)
         const loginBtn = (
             <Link to="/login" className="nav">
                 <button className="loginout">
