@@ -15,7 +15,7 @@ class Header extends Component {
 
     handleLogout() {
         this.props.logoutRequest().then(() => {
-            localStorage.setItem('access_token', '');
+            localStorage.clear();
             browserHistory.push('/');
         })
     }

@@ -13,18 +13,17 @@ class Home extends Component {
         super(props);
         // console.log('isLoggedIn', this.props.isLoggedIn);
         console.log('accessToken', this.props.accessToken);
+        console.log('localStorage Check', localStorage.getItem('accessToken'))
         this.state = {
             plugins: [],
-            plug: [],
         }
         this.plugins = [new Fade(), new AutoPlay(2000, 'NEXT')];
-        this.plug = [new Parallax("img", 4)];
         this.routeChange = this.routeChange.bind(this);
     }
 
-    componentDidUpdate() {
-        if (this.props.accessToken) {
-            localStorage.setItem('access_token', this.props.accessToken);
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.accessToken !== prevProps.accessToken) {
+            localStorage.setItem('accessToken', this.props.accessToken);
         }
     }
 
