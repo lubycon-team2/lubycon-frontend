@@ -21,12 +21,6 @@ class Home extends Component {
         this.routeChange = this.routeChange.bind(this);
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (this.props.accessToken !== prevProps.accessToken) {
-            localStorage.setItem('accessToken', this.props.accessToken);
-        }
-    }
-
     routeChange() {
         browserHistory.push('/login');
     }
