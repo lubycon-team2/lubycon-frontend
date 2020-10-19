@@ -3,7 +3,7 @@
 /*eslint-disable-next-line*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link, browserHistory } from 'react-router';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { logoutRequest } from '../actions/authentication';
 
