@@ -18,7 +18,7 @@ class Home extends Component {
             plugins: [],
             plug: [],
         }
-        this.plugins = [new Fade(), new AutoPlay(3000, 'NEXT')];
+        this.plugins = [new Fade(), new AutoPlay(2000, 'NEXT')];
         this.plug = [new Parallax("img", 4)];
         this.routeChange = this.routeChange.bind(this);
     }
@@ -78,6 +78,7 @@ class Home extends Component {
                                     className="flicking"
                                     gap={5}
                                     circular={true}
+                                    duration={600}
                                     plugins={this.plugins}
                                     >
                                     <div className="panel">
