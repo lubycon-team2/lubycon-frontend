@@ -19,12 +19,14 @@ class Redirect extends Component {
         }
         this.handleLogin = this.handleLogin.bind(this);
     }
+
     handleLogin(accessToken) {
         this.props.tokensaveRequest(accessToken)
         let loginData = {
             isLoggedIn: true,
             accessToken: accessToken,
         };
+        localStorage.setItem('accessToken', JSON.stringify(accessToken));
         document.cookie = 'key=' + btoa(JSON.stringify(loginData)); // save session data in cookie 
 
         browserHistory.push('/'); 
@@ -39,8 +41,8 @@ class Redirect extends Component {
             accessToken: token
         })
         this.handleLogin(token);
-     
     }
+    
     render() {
         return (
             <div>
