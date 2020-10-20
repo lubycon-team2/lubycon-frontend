@@ -1,6 +1,7 @@
 import {
     ACCESS_TOKEN_SAVE,
     AUTH_GET_STATUS,
+    PHONE_AUTH,
     AUTH_LOGOUT,
 } from './ActionTypes';
 import axios from 'axios';
@@ -58,19 +59,33 @@ export function getStatus(accessToken) {
 export function phoneAuthRequest(accessToken, phoneNum) {
     return (dispatch) => {
         dispatch(phoneAuth());
-
-        return axios.post('https://api.partying.cf/authenticate/sms/send', {headers: {
-            Authorization: 'Bearer ' + accessToken
-        }}, {phoneNum}).then((response) => {
-            if(response.data.message === 'Success send SMS') {
-                localStorage.setItem('isPhoneAuth', 'true');
-                dispatch(phoneAuthSuccess(phoneNum));
-            }
-        })
+        console.log(accessToken, phoneNum);
+        return axios.post('https://api.partying.cf/authenticate/sms/send', 
+                        {
+                            headers: {
+                                Authorization: 'Bearer ' + accessToken
+                            },
+                            to: phoneNum
+                        })
+                .then((response) => {
+                    console.log(response)
+                    if(response.status === 200) {
+                        localStorage.setItem('isPhoneAuth', 'true');
+                        dispatch(phoneAuthSuccess(phoneNum));
+                    }
+                }).catch((err) => {
+                    console.error(err);
+                })
     }
 }
 
 export function phoneAuth() {
+    return {
+        type: PHONE_AUTH,
+    }
+}
+
+export function phoneAuthSuccess() {
     return {
         type: PHONE_AUTH,
     }

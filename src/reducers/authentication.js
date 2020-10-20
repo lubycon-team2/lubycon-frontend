@@ -9,6 +9,7 @@ const initialState = {
         valid: false,
         isLoggedIn: false,
         accessToken: '',
+        phoneVerified: 'INIT',
     },
 }
 
@@ -33,6 +34,13 @@ export default function authentication(state, action) {
                     accessToken: { $set: action.accessToken },
                 }
             });
+        // PHONE_AUTH
+        case types.PHONE_AUTH:
+            return update(state, {
+                status: {
+                    phoneVerified: { $set: 'WAITING' },
+                }
+            })
         // LOGOUT
         case types.AUTH_LOGOUT:
             return update(state, {
