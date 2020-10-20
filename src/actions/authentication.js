@@ -9,6 +9,15 @@ import axios from 'axios';
 export function tokensaveRequest(accessToken) {
     return (dispatch) => {
         dispatch(tokenSave(accessToken));
+
+        return axios.get('https://api.partying.cf/profiles/me', {headers: {
+            Authorization: 'Bearer ' + accessToken
+        }}).then((response) => {
+            localStorage.setItem('isPhoneAuth', response.data.isPhoneAuthentication);
+            localStorage.setItem('profileUrl', response.data.profileUrl);
+            localStorage.setItem('name', response.data.name);
+            localStorage.setItem('userId', response.data.userId);
+        })
     };
 }
 
@@ -23,7 +32,8 @@ export function tokenSave(accessToken) {
 export function getStatusRequest(token) {
     return (dispatch) => {
         dispatch(getStatus());
-        console.log('haha', token);
+        // console.log('haha', token);
+        // console.log('haha', window.atob(token));
         return axios.get('https://api.partying.cf/profiles/me', {headers: {
             Authorization: 'Bearer ' + JSON.stringify(token)
         }})
@@ -42,6 +52,28 @@ export function getStatus(accessToken) {
         type: AUTH_GET_STATUS,
         accessToken,
     };
+}
+
+/* PHONE AUTH */
+export function phoneAuthRequest(accessToken, phoneNum) {
+    return (dispatch) => {
+        dispatch(phoneAuth());
+
+        return axios.post('https://api.partying.cf/authenticate/sms/send', {headers: {
+            Authorization: 'Bearer ' + accessToken
+        }}, {phoneNum}).then((response) => {
+            if(response.data.message === 'Success send SMS') {
+                localStorage.setItem('isPhoneAuth', 'true');
+                dispatch(phoneAuthSuccess(phoneNum));
+            }
+        })
+    }
+}
+
+export function phoneAuth() {
+    return {
+        type: PHONE_AUTH,
+    }
 }
 
 /* LOGOUT */

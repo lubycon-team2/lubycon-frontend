@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
-    console.log('isLoggedIn status', this.props.status.isLoggedIn);
+    // console.log('isLoggedIn status', this.props.status.isLoggedIn);
     this.state = {
       urlPath: this.props.location.pathname,
     }
@@ -21,18 +21,6 @@ class App extends Component {
         urlPath: location.pathname
       });
     })
-
-    // page refreshed & has a session in cookie,
-    // check whether this cookie is valid or not
-    // this.props.getStatusRequest().then(
-    //   () => {
-    //     // this.props.status.isLoggedIn = true;
-    //     }
-    // );
-    this.props.getStatusRequest(localStorage.getItem('accessToken')).then(() => {
-
-    });
-
   }
 
   handleLogout() {
