@@ -10,7 +10,6 @@ function getParameterByName(name) {
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-
 class Redirect extends Component {
     constructor(props){
         super(props);
@@ -22,20 +21,18 @@ class Redirect extends Component {
 
     handleLogin(accessToken) {
         this.props.tokensaveRequest(accessToken);
-        localStorage.setItem('accessToken', JSON.stringify(accessToken));
+        // localStorage.setItem('accessToken', accessToken);
 
         browserHistory.push('/'); 
         return true;    
     }
     
-
     componentDidMount() {
         const token = getParameterByName('access_token');
-
         this.setState({
-            accessToken: token
+            accessToken: atob(token)
         })
-        this.handleLogin(token);
+        this.handleLogin(atob(token));
     }
 
     render() {

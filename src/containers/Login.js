@@ -9,7 +9,6 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.handleLogin = this.handleLogin.bind(this);
-        console.log(this.props.status);
     }
 
     handleLogin(e) {

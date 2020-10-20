@@ -15,17 +15,17 @@ class NewParty extends Component {
         
     }
     componentDidMount() {
-        
-        // if (this.props.status.isLoggedIn === false) {
-        //     console.log(this.props.status.isLoggedIn);
-        //     browserHistory.push('/login');
-        // }
+        console.log(localStorage.getItem('isPhoneAuth'));
+        console.log(localStorage.getItem('isPhoneAuth') === 'false');
     };
+
     render() {
         return (
-            <PhoneAuth />
+            <div>
+                {localStorage.getItem('isPhoneAuth') === 'false' ? <PhoneAuth/> : undefined}
+            </div>
         );
-    };
+    }
 };
 
 const mapStateToProps = (state) => {

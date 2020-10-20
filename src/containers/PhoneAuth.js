@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { phoneAuthRequest } from 'src/actions/authentication';
 
 class PhoneAuth extends Component {
 
@@ -9,26 +10,38 @@ class PhoneAuth extends Component {
             phoneNum: '',
             authNum: '',
         };
-
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e) {
-        let phoneNum = e.target.value;
-
-        if (phoneNum.length > 11) {
-            e.target.value = phoneNum.toString().substr(0, 11);
-        } else {
-            this.setState({
-                phoneNum: e.target.value,
-            })
+        console.log(this.props.accessToken);
+        if (e.target.className === 'phone') {
+            let phoneNum = e.target.value;
+            if (phoneNum.length > 11) {
+                e.target.value = phoneNum.toString().substr(0, 11);
+            } else {
+                this.setState({
+                    phoneNum: e.target.value,
+                })
+            }
+        } else if (e.target.className === 'authnum') {
+            let authNum = e.target.value;
+            if (authNum.length > 6)  {
+                e.target.value = authNum.toString().substr(0, 6);
+            } else {
+                this.setState({ 
+                    authNum: e.target.value,
+                })
+            }
         }
     }
 
     handleSubmit(e) {
-        console.log(this.props.accessToken);
+        console.log(e.target.className);
+        this.props.phoneAuthRequest(this.props.accessToken, this.state.phoneNum);
         e.preventDefault();
+        
     }
 
     render() {
@@ -41,10 +54,13 @@ class PhoneAuth extends Component {
                         </label>
                         <input className='submit' type="submit" value="인증번호받기" disabled={this.state.phoneNum.length !== 11} />
                     </div>
-                    <div className='phone_auth_form_auth'>
+                </form>
+                <form className='phone_auth_form_auth' onSubmit={this.handleSubmit}>
+                    <div className='phone_auth_form_auth_num'>
                         <label>
-                            <input className='authnum' type="number" placeholder='인증번호 입력' value={this.authNum} />
+                            <input className='authnum' type="number" placeholder='인증번호 입력' value={this.authNum} onChange={this.handleChange}/>
                         </label>
+                        <input className='submit' type="submit" value="확인" disabled={this.state.authNum.length !== 6} />
                     </div>
                 </form>
             </div>
@@ -60,7 +76,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        phoneAuthRequest: (accessToken, phoneNum) => {
+            return dispatch(phoneAuthRequest(accessToken, phoneNum));
+        }
     };
 };
 
