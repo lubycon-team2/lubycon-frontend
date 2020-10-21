@@ -32,13 +32,14 @@ body {
 }
 
 .nav {
+  font-family: IBMPlexSans-Bold;
   text-decoration: none;
-  color: black;
+  color:  #555553;
 }
 
 .nav:focus {
   font-weight: bold;
-  color: #555553;
+  color: #343432;
 }
 
 .loginout {

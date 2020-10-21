@@ -38,6 +38,13 @@ export default function authentication(state, action) {
                     phoneVerified: { $set: 'WAITING' },
                 }
             })
+        // PHONE_AUTH_VERIFY
+        case types.PHONE_AUTH_VERIFY:
+            return update(state, {
+                status: {
+                    phoneVerified: { $set: 'SUCCESS' },
+                }
+            })
         // LOGOUT
         case types.AUTH_LOGOUT:
             return update(state, {

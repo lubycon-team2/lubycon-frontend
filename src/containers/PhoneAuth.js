@@ -38,11 +38,19 @@ class PhoneAuth extends Component {
     }
 
     handleSubmit(e) {
-        console.log(e.target.className);
-        this.props.phoneAuthRequest(this.props.accessToken, this.state.phoneNum)
-            .then(() => {
-                localStorage.setItem('isPhoneAuth', true);
-            });
+        const className = e.target.className;
+        if (className === 'phone_auth_form') {
+            this.props.phoneAuthRequest(this.props.accessToken, this.state.phoneNum)
+                .then(() => {
+                    localStorage.setItem('isPhoneAuth', 'WAITING');
+                })
+        } else if (className === 'phone_auth_form_auth') {
+            console.log('done')
+            this.props.phoneAuthRequest(this.props.accessToken, this.state.phoneNum)
+                .then(() => {
+                    localStorage.setItem('isPhoneAuth', 'SUCCESS');
+                });
+        }
     }
 
     render() {
@@ -51,17 +59,17 @@ class PhoneAuth extends Component {
                 <form className='phone_auth_form' onSubmit={this.handleSubmit}>
                     <div className='phone_auth_form_num'>
                         <label>
-                            <input className='phone' type="tel" placeholder='-없이 숫자만 입력' value={this.phoneNum} onChange={this.handleChange} />
+                            <input className='phone' type='tel' placeholder='-없이 숫자만 입력' value={this.phoneNum} onChange={this.handleChange} />
                         </label>
-                        <input className='submit' type="submit" value="인증번호받기" disabled={this.state.phoneNum.length !== 11} />
+                        <input className='submit' type='submit' value='인증번호받기' disabled={this.state.phoneNum.length !== 11} />
                     </div>
                 </form>
                 <form className='phone_auth_form_auth' onSubmit={this.handleSubmit}>
                     <div className='phone_auth_form_auth_num'>
                         <label>
-                            <input className='authnum' type="number" placeholder='인증번호 입력' value={this.authNum} onChange={this.handleChange}/>
+                            <input className='authnum' type='number' placeholder='인증번호 입력' value={this.authNum} onChange={this.handleChange}/>
                         </label>
-                        <input className='submit' type="submit" value="확인" disabled={this.state.authNum.length !== 6} />
+                        <input className='submit' type='submit' value='확인' disabled={this.state.authNum.length !== 6} />
                     </div>
                 </form>
             </div>
@@ -72,6 +80,7 @@ class PhoneAuth extends Component {
 const mapStateToProps = (state) => {
     return {
         accessToken: state.authentication.status.accessToken,
+        phoneVerified: state.authentication.status.phoneVerified,
     };
 };
 
