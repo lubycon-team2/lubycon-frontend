@@ -15,10 +15,10 @@ class PhoneAuth extends Component {
     }
 
     handleChange(e) {
-        console.log(this.props.accessToken);
         if (e.target.className === 'phone') {
             let phoneNum = e.target.value;
             if (phoneNum.length > 11) {
+                console.log(this.props.accessToken)
                 e.target.value = phoneNum.toString().substr(0, 11);
             } else {
                 this.setState({
@@ -39,9 +39,10 @@ class PhoneAuth extends Component {
 
     handleSubmit(e) {
         console.log(e.target.className);
-        this.props.phoneAuthRequest(this.props.accessToken, this.state.phoneNum);
-        e.preventDefault();
-        
+        this.props.phoneAuthRequest(this.props.accessToken, this.state.phoneNum)
+            .then(() => {
+                localStorage.setItem('isPhoneAuth', true);
+            });
     }
 
     render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Header } from '.';
 import { connect } from 'react-redux';
-import { getStatusRequest, logoutRequest } from '../actions/authentication'; 
+import { setStatus, logoutRequest } from '../actions/authentication'; 
 import { browserHistory } from 'react-router';
 
 class App extends Component {
@@ -21,6 +21,13 @@ class App extends Component {
         urlPath: location.pathname
       });
     })
+
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo !== null && userInfo.isLoggedIn) {
+      // TODO: 로그인 state  업데이트 
+      // 로컬스토리지 - 토큰 저장 userInfo json으로 저장하기 
+      this.props.setStatus(userInfo.accessToken);
+    }
   }
 
   handleLogout() {
@@ -49,8 +56,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getStatusRequest: (token) => {
-      return dispatch(getStatusRequest(token));
+    setStatus: (token) => {
+      return dispatch(setStatus(token));
     },
     logoutRequest: () => {
       return dispatch(logoutRequest());

@@ -14,10 +14,6 @@ class NewParty extends Component {
         }
         
     }
-    componentDidMount() {
-        console.log(localStorage.getItem('isPhoneAuth'));
-        console.log(localStorage.getItem('isPhoneAuth') === 'false');
-    };
 
     render() {
         return (

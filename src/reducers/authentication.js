@@ -2,11 +2,8 @@ import * as types from '../actions/ActionTypes';
 import update from 'react-addons-update';
 
 const initialState = {
-    login: {
-        status:  'INIT'
-    },
     status: {
-        valid: false,
+        userId: '',
         isLoggedIn: false,
         accessToken: '',
         phoneVerified: 'INIT',
@@ -25,12 +22,12 @@ export default function authentication(state, action) {
                     accessToken: { $set: action.accessToken },
                 }
             });
-        // GET STATUS
-        case types.AUTH_GET_STATUS: // 쿠키에 세션이 저장된 상태에서, 새로고침했을 때만 실행됨 
+        // SET STATUS
+        case types.AUTH_SET_STATUS: // 새로고침했을 때만 실행됨 
             return update(state, {
                 status: {
                     isLoggedIn: { $set: true },
-                    valid: { $set: true },
+                    // userId: { $set: action.userId },
                     accessToken: { $set: action.accessToken },
                 }
             });
