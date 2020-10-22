@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/alt-text */
+/*eslint-disable-next-line*/
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 
@@ -44,8 +47,8 @@ class SetPartyPrice extends Component {
                     {addLineBreaks(data)}
                 </div>
             </div>
-            <div className='newparty_name'>
-                <form className='newparty_name_form' onSubmit={this.handleSubmit}>
+            <div className='newparty_price'>
+                <form className='newparty_price_form' onSubmit={this.handleSubmit}>
                     <div className='group'>
                         <div className="title">
                             파티장
@@ -59,7 +62,10 @@ class SetPartyPrice extends Component {
                         </div>
                     </div>
                     <div>
-                        <div className="title">
+                        <img src={require("../../assets/images/down_arrow.svg")} />
+                    </div>
+                    <div className='group'>
+                        <div className="title_member">
                             파티원
                         </div>
                         <div className='detail'>

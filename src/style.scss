@@ -1154,6 +1154,52 @@ body {
       }
     }
   }
+
+  &_price {
+
+    &_form {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+
+      .group {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        margin: 5%;
+
+        .title_member {
+          margin-top: 10px;
+        }
+      }
+
+      .title {
+        margin-top: 21px;
+      }
+      
+      .input_detail {
+        border: none;
+        border-bottom: solid 0.6px #e3e3e3;
+        text-align: left;
+        width: 227.6px;
+      }
+
+      .submit {
+        position: absolute;
+        top: 90%;
+        left: 0.01%;
+        width: 100%;
+        border: none;
+        background-color: #af90ff;
+        color: white;
+        height: 10vh;
+      }
+
+      .submit:disabled {
+        background-color: #cfc8e3;
+      }
+    }
+  }
 }
 
 @font-face {
