@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { phoneAuthRequest } from 'src/actions/authentication';
+import { Timer } from '.';
 
 class PhoneAuth extends Component {
 
@@ -12,6 +13,10 @@ class PhoneAuth extends Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        localStorage.setItem('timer', 179);
     }
 
     handleChange(e) {
@@ -69,6 +74,7 @@ class PhoneAuth extends Component {
                         <label>
                             <input className='authnum' type='number' placeholder='인증번호 입력' value={this.authNum} onChange={this.handleChange}/>
                         </label>
+                        {localStorage.getItem('isPhoneAuth') === 'WAITING' ? <Timer /> : undefined }
                         <input className='submit' type='submit' value='확인' disabled={this.state.authNum.length !== 6} />
                     </div>
                 </form>

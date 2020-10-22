@@ -991,10 +991,19 @@ body {
       justify-content: space-between;
       flex-direction: column;
 
+      .timer {
+        font-size: 14px;
+        color: #ff5252;
+        position: relative;
+        right: -83%;
+        letter-spacing: -0.4px;
+        width: fit-content;
+      }
+
       .authnum {
         border: none;
         border-bottom: solid 0.6px #e3e3e3;
-        width: 90%;
+        // width: 50%;
       }
 
       .submit {
