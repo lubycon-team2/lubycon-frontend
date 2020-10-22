@@ -18,7 +18,7 @@ class NewParty extends Component {
     render() {
         return (
             <div>
-                {localStorage.getItem('isPhoneAuth') === 'false' ? <PhoneAuth/> : undefined}
+                {localStorage.getItem('isPhoneAuth') === 'SUCCESS' ? undefined : <PhoneAuth/>}
             </div>
         );
     }

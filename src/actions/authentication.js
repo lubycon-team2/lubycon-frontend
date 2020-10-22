@@ -2,6 +2,7 @@ import {
     ACCESS_TOKEN_SAVE,
     AUTH_SET_STATUS,
     PHONE_AUTH,
+    PHONE_AUTH_VERIFY,
     AUTH_LOGOUT,
 } from './ActionTypes';
 import axios from 'axios';
@@ -57,8 +58,8 @@ export function phoneAuthRequest(accessToken, phoneNum) {
                             to: phoneNum
                         })
                 .then((response) => {
-                    localStorage.setItem('isPhoneAuth', true); 
-                    dispatch(phoneAuthSuccess(phoneNum));
+                    // localStorage.setItem('isPhoneAuth', true); 
+                    // dispatch(phoneAuthSuccess(phoneNum));
                 }).catch((err) => {
                     console.error(err);
                 })
@@ -74,6 +75,33 @@ export function phoneAuth() {
 export function phoneAuthSuccess() {
     return {
         type: PHONE_AUTH,
+    }
+}
+
+/* PHONE_AUTH_VERIFY */
+export function phoneAuthVerifyRequest(accessToken, phoneNum, authNum) {
+    return (dispatch) => {
+        dispatch(phoneAuthVerify());
+        
+        return axios.post('https://api.partying.cf/authenticate/sms/verify', 
+        {
+            headers: {
+                Authorization: 'Bearer ' + accessToken
+            },
+            to: phoneNum,
+            code: authNum,
+        })
+        .then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.error(err);
+        })
+    }
+}
+
+export function phoneAuthVerify() {
+    return {
+        type: PHONE_AUTH_VERIFY,
     }
 }
 
