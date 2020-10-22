@@ -26,6 +26,15 @@
   font-family: YoonGothic740;
 }
 
+@mixin hr($width, $top) {
+  width: $width;
+  position: absolute;
+  left: 3%;
+  top: $top;
+  border: 0;
+  border-top: 2px solid #af90ff;
+}
+
 body {
   //overflow: hidden;
   margin: auto;
@@ -40,6 +49,94 @@ body {
 .nav:focus {
   font-weight: bold;
   color: #343432;
+}
+
+.logo_group {
+  margin: 8% 6%;
+
+  .logos {
+    display: flex;
+    justify-content: space-around;
+
+    .btn_name {
+      padding-top: 5px;
+      font-family: IBMPlexSans-Medium;
+      font-size: 14px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.71;
+      letter-spacing: normal;
+      text-align: center;
+      color: #646464;
+    }
+    
+    input {
+      height: 74px;
+      width: 78px;
+      border-radius: 13px;
+      border: none;
+      background-color: #f6f6f6;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    button:hover {
+      background-color: #dcdcdc;
+    }
+
+    button:active {
+      background-color: #dcdcdc;
+    }
+
+    .btn_netflix {
+      background-image: url('../src/assets/images/logo_netflix.png');
+    }
+    
+    .btn_netflix:hover {
+      border: 2px solid #c90016;
+    }
+
+    .btn_netflix:focus {
+      border: 2px solid #c90016;
+    }
+
+    .btn_wave {
+      background-image: url('../src/assets/images/logo_wave.png');
+    }
+
+    .btn_wave:hover {
+      border: 2px solid blue;
+    }
+
+    .btn_wave:focus {
+      border: 2px solid blue;
+    }
+
+    .btn_watcha {
+      background-image: url('../src/assets/images/logo_watcha.png');
+    }
+
+    .btn_watcha:hover {
+      border: 2px solid #e32636;
+    }
+
+    .btn_watcha:active {
+      border: 2px solid #e32636;
+    }
+
+    .btn_apple {
+      background-image: url('../src/assets/images/logo_apple.svg');
+    }
+
+    .btn_apple:hover {
+      border: 2px solid #a2a2d0;
+    }
+
+    .btn_apple:active {
+      border: 2px solid #a2a2d0;
+    }
+  }
 }
 
 .loginout {
@@ -255,75 +352,7 @@ body {
       }
     }
   
-  .logo_group {
-    margin: 8% 3%;
 
-    .logos {
-      display: flex;
-      justify-content: space-around;
-
-      .btn_name {
-        padding-top: 5px;
-        font-family: IBMPlexSans-Medium;
-        font-size: 14px;
-        font-weight: 500;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.71;
-        letter-spacing: normal;
-        text-align: center;
-        color: #646464;
-      }
-      
-      button {
-        height: 74px;
-        width: 78px;
-        border-radius: 13px;
-        border: none;
-        background-color: #f6f6f6;
-      }
-
-      button:hover {
-        background-color: #dcdcdc;
-      }
-
-      button:active {
-        background-color: #dcdcdc;
-      }
-      
-      .btn_netflix:hover {
-        border: 2px solid #c90016;
-      }
-
-      .btn_netflix:focus {
-        border: 2px solid #c90016;
-      }
-
-      .btn_wave:hover {
-        border: 2px solid blue;
-      }
-
-      .btn_wave:focus {
-        border: 2px solid blue;
-      }
-
-      .btn_watcha:hover {
-        border: 2px solid #e32636;
-      }
-
-      .btn_watcha:active {
-        border: 2px solid #e32636;
-      }
-
-      .btn_apple:hover {
-        border: 2px solid #a2a2d0;
-      }
-
-      .btn_apple:active {
-        border: 2px solid #a2a2d0;
-      }
-    }
-  }
 
   .party-group {
     margin: 5% 3%;
@@ -1012,6 +1041,116 @@ body {
         align-items: center;
         margin-top: 50%;
         width: 90% !important;
+      }
+    }
+  }
+}
+
+.newparty {
+  font-family: IBMPlexSans;
+
+  &_header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+
+    &_text {
+      font-size: 18px;
+      font-weight: 500;
+      font-style: normal;
+      font-stretch: normal;
+    }
+  }
+  .x-icon {
+    position: absolute;
+    top: 3.3%;
+    left: 6%;
+    border: none;
+    background-color: white;
+  }
+
+  .partyContents_bar {
+    @include hr(20%, 8.1%);
+  }
+
+  .partyName_bar {
+    @include hr(35%, 8.1%);
+  } 
+
+  @media ( min-height: 812px ) {
+    .partyContents_bar {
+      @include hr(20%, 6.9%);
+    }
+    .partyName_bar {
+      @include hr(35%, 6.9%);
+    }
+  }
+
+  @media ( min-height: 1024px ) {
+    .partyContents_bar {
+      @include hr(20%, 9.2%);
+    }
+    .partyName_bar {
+      @include hr(35%, 9.2%);
+    }
+  }
+
+  &_content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 7%;
+    margin-bottom: 15%;
+    
+    .main {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+      color: #222222;
+      padding: 3%;
+    }
+
+    .sub {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 300;
+      color: #4a4a4a;
+    }
+  }
+
+  &_name {
+
+    &_form {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+
+      .title {
+        margin-top: 21px;
+      }
+      
+      .input_detail {
+        border: none;
+        border-bottom: solid 0.6px #e3e3e3;
+        text-align: left;
+        width: 227.6px;
+      }
+
+      .submit {
+        position: absolute;
+        top: 90%;
+        left: 0.01%;
+        width: 100%;
+        border: none;
+        background-color: #af90ff;
+        color: white;
+        height: 10vh;
+      }
+
+      .submit:disabled {
+        background-color: #cfc8e3;
       }
     }
   }

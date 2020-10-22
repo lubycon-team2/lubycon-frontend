@@ -291,46 +291,18 @@ class Home extends Component {
                         <div className="logo_group">
                             <div className="logos">
                                 <div>
-                                    <button className="btn_netflix">
-                                        <div className="btn_netflix_logo">
-                                            <img src={require("../assets/images/logo_netflix.png")} />
-                                        </div>
-                                    </button>
-                                    <div className="btn_name">
-                                        넷플릭스
-                                    </div>
+                                    <input className="btn_netflix" type='button' name='netflix' onClick={this.handleClick} />
                                 </div>
                                 <div>
                                 <div>
-                                    <button className="btn_wave">
-                                        <div className="btn_wave_logo">
-                                            <img src={require("../assets/images/logo_wave.png")} />
-                                        </div>
-                                    </button>
-                                    <div className="btn_name">
-                                        웨이브
-                                    </div>
+                                    <input className="btn_wave" type='button' name='wave' onClick={this.handleClick} />
                                 </div>
                                 </div>
                                 <div>
-                                    <button className="btn_watcha">
-                                        <div className="btn_watcha_logo">
-                                            <img src={require("../assets/images/logo_watcha.png")} />
-                                        </div>
-                                    </button>
-                                    <div className="btn_name">
-                                        왓챠
-                                    </div>
+                                    <input className="btn_watcha" type='button' name='watcha' onClick={this.handleClick} />
                                 </div>
                                 <div>
-                                    <button className="btn_apple">
-                                        <div className="btn_apple_logo">
-                                            <img src={require("../assets/images/logo_apple.svg")} />
-                                        </div>
-                                    </button>
-                                    <div className="btn_name">
-                                        애플 뮤직
-                                    </div>
+                                    <input className="btn_apple" type='button' name='apple' onClick={this.handleClick} />
                                 </div>
                             </div>
                         </div>

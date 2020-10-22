@@ -56,6 +56,7 @@ class PhoneAuth extends Component {
                     localStorage.setItem('isPhoneAuth', 'SUCCESS');
                 });
         }
+        e.preventDefault();
     }
 
     render() {

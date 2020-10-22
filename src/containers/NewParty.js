@@ -1,39 +1,47 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/alt-text */
-/*eslint-disable-next-line*/
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { PhoneAuth} from '.';
-// import { Link } from 'react-router';
+import { SelectContents, SetPartyName, SetPartyPrice } from '.';
+import ClearIcon from '@material-ui/icons/Clear';
 
 class NewParty extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputValue: '',
+            contents: '',
+            partyName: '',
+            partyPrice: {
+                leader: 0,
+                member: 0
+            },
+            partyTerm: '',
         }
-        
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(stateName, name) {
+        this.setState({
+            [stateName]: name
+        }, ()=> console.log(this.state));
+
     }
 
     render() {
         return (
-            <div>
-                {localStorage.getItem('isPhoneAuth') === 'SUCCESS' ? undefined : <PhoneAuth/>}
+            <div className='newparty'>
+                <div className='newparty_header'>
+                    <div className='newparty_header_text'>
+                        파티 생성하기
+                    </div>
+                </div>
+                <hr className='hr'></hr>
+                <button className='x-icon'>
+                    <ClearIcon />
+                </button>
+                {!this.state.contents ? <SelectContents selectContents={this.handleClick} /> : undefined }
+                {this.state.contents && !this.state.partyName ? <SetPartyName setPartyName={this.handleClick} /> : undefined}
+                {this.state.partyName && this.state.partyPrice.leader === 0 ? <SetPartyPrice setPartyPrice={this.handleClick} /> : undefined}
             </div>
         );
     }
-};
+}
 
-const mapStateToProps = (state) => {
-    return {
-        status: state.authentication.status,
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewParty);
+export default NewParty;
