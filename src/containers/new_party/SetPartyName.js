@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/alt-text */
-/*eslint-disable-next-line*/
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 
