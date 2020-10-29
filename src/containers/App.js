@@ -40,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.urlPath === '/login' || this.state.urlPath === '/party/new'? undefined :<Header isLoggedIn={this.props.status.isLoggedIn}
+        {location.urlPath === '/login' || location.urlPath === '/party/new'? undefined :<Header isLoggedIn={this.props.status.isLoggedIn}
                 onLogout={this.handleLogout} />}
         {this.props.children}
       </div>
