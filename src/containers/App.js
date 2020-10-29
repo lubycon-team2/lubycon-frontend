@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       urlPath: this.props.location.pathname,
     }
+    console.log('pathname', this.props.location.pathname)
   }
 
   componentDidMount() {
